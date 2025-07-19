@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مملكة التمور - مطار بسكرة</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+     header {
+    background-image: url('https://live.staticflickr.com/65535/54665593258_051c02f811_b.jpg'); /* رابط صورة المحل */
+    background-size: cover; /* لجعل الصورة تغطي كامل المساحة */
+    background-position: center; /* لمركزة الصورة */
+    background-repeat: no-repeat; / لمنع تكرار الصورة /
+    color: white;
+    padding: 6rem 0; /* زيادة padding لجعل النص مرئيًا فوق الصورة */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative; /* لإنشاء سياق لـ ::before */
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* طبقة سوداء شفافة لجعل النص أكثر وضوحًا */
+    z-index: 1; /* وضع الطبقة تحت النص */
+}
+
+header > * {
+    position: relative;
+    z-index: 2; /* وضع النص فوق الطبقة الشفافة */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3.5rem; /* تكبير حجم العنوان قليلاً */
+    letter-spacing: 1px;
+    /* أضف/عدل هنا: color: #AAAAAA; */
+}
+
+header p {
+    margin: 0.5rem 0 0;
+    font-size: 1.4rem; /* تكبير حجم الوصف قليلاً */
+    opacity: ; /* جعل الوصف غير شفاف تمامًا */
+    /* أضف/عدل هنا: color: #AAAAAA; */
+}
+        main {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .product-image {
+            width: 100%;
+            height: 250px; /* ارتفاع ثابت للصور */
+            overflow: hidden;
+            position: relative;
+            cursor: pointer; /* للإشارة إلى إمكانية التكبير */
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* لضمان تغطية الصورة للمساحة دون تشويه */
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-info h2 {
+            color: #4CAF50; /* لون أخضر للعنوان */
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+        .product-info p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6a0e0e; /* لون بني للأسعار */
+            margin-top: auto; /* يدفع السعر للأسفل */
+        }
+
+        .contact-section {
+            background-color: #e6e6e6;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+        .contact-section h3 {
+            color: #6a0e0e;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap; /* للسماح بالالتفاف على الشاشات الصغيرة */
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        .contact-buttons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        .whatsapp-btn:hover {
+            background-color: #1DA851;
+            transform: translateY(-3px);
+        }
+        .email-btn {
+            background-color: #D44638; /* لون أحمر للجيميل */
+            color: white;
+        }
+        .email-btn:hover {
+            background-color: #B03A2F;
+            transform: translateY(-3px);
+        }
+        .social-btn {
+            background-color: #3b5998; /* لون الفيسبوك */
+            color: white;
+        }
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+        .social-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+        }
+        .contact-buttons a img {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px; /* لتباعد الأيقونة عن النص */
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Image Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            padding-top: 60px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media only screen and (max-width: 700px){
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>مملكة التمور</h1>
+        <p>مطار بسكرة - الجزائر</p>
+    </header>
+
+    <main>
+        <div class="product-grid">
+            <section class="product-card">
+                <div class="product-image">
+                    <img src="https://i.imgur.com/kEBYEhJ.jpg" alt="تمر" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>تمر (نوع بسكرة)</h2>
+                    <p>تمر فاخر من أجود أنواع التمور في منطقة بسكرة، غني بالمعادن والفيتامينات، مثالي للضيافة والطاقة.</p>
+                    <p class="price">السعر: 00€</p>
+                </div>
+            </section>
+
+            <section class="product-card">
+                <div class="product-image">
+                    <img src="https://i.imgur.com/7b2yGtt.jpg" alt="سكر التمر" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>سكر التمر</h2>
+                    <p>بديل صحي للسكر الأبيض، مستخرج من التمور الطبيعية. قيمة غذائية عالية لاحتوائه على معادن مهمة.</p>
+                    <p class="price">السعر:  00€</p>
+                </div>
+            </section>
+            
+            <section class="product-card">
+            	 <div class="product-image">
+                    <img src="https://i.imgur.com/DUtV9mp.jpg" alt="سكر التمر بالليمون" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>سكر التمر بالليمون</h2>
+                    <p>بديل صحي للسكر الأبيض، مستخرج من التمور الطبيعية. قيمة غذائية عالية لاحتوائه على معادن مهمة.</p>
+                    <p class="price">السعر:  00€</p>
+                </div>
+            </section>
+            
+            <section class="product-card">
+            	 <div class="product-image">
+                    <img src="https://i.imgur.com/Zb6jqGG.jpg" alt="سكر التمر بالخروب" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>سكر التمر بالخروب</h2>
+                    <p>بديل صحي للسكر الأبيض، مستخرج من التمور الطبيعية. قيمة غذائية عالية لاحتوائه على معادن مهمة.</p>
+                    <p class="price">السعر:  00€</p>
+                </div>
+            </section>
+            
+
+            <section class="product-card">
+                <div class="product-image">
+                    <img src="https://i.imgur.com/vzZXrrl.jpg" alt="دبس التمر" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>دبس التمر</h2>
+                    <p>عصير التمر المكثف، حلو ومغذٍ، مثالي للإفطار أو كمُحلي طبيعي للمشروبات والحلويات.</p>
+                    <p class="price">السعر: 00€</p>
+                </div>
+            </section>
+            
+            <section class="product-card">
+            	 <div class="product-image">
+                    <img src="https://i.imgur.com/eh86yJi.jpg" alt="عسل التمر الخالص" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>عسل التمر الخالص</h2>
+                    <p>عصير التمر المكثف، حلو ومغذٍ، مثالي للإفطار أو كمُحلي طبيعي للمشروبات والحلويات.</p>
+                    <p class="price">السعر:  00€</p>
+                </div>
+            </section>
+
+            <section class="product-card">
+                <div class="product-image">
+                    <img src="https://i.imgur.com/lLT7u6q.jpg" alt="خل التمر" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>خل التمر</h2>
+                    <p>خل طبيعي مصنوع من التمر، يستخدم في الطهي والسلطات، وله فوائد صحية معروفة.</p>
+                    <p class="price">السعر:  00€</p>
+                </div>
+            </section>
+
+            <section class="product-card">
+                <div class="product-image">
+                    <img src="https://i.imgur.com/EMp7T1M.jpg" alt="قهوة نوى التمر" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>قهوة نوى التمر</h2>
+                    <p>بديل للقهوة خالٍ من الكافيين، مصنوع من نوى التمر المحمصة والمطحونة، غني بمضادات الأكسدة.</p>
+                    <p class="price">السعر:  00€</p>
+        </div>
+            </section>
+            
+            <section class="product-card">
+                <div class="product-image">
+                    <img src="https://i.imgur.com/WoELgKw.jpg" alt="زريز" onclick="openModal(this)">
+                </div>
+                <div class="product-info">
+                    <h2>زريز</h2>
+                    <p>حلوى جزائرية تقليدية غنية بالطاقة مصنوعة من التمر والسميد والزبدة، تقدم في المناسبات.</p>
+                    <p class="price">السعر:  00€</p>
+       </div>
+            </section>
+            
+            <section class="product-card">
+            	<div class="product-image">
+            	<img src="https://i.imgur.com/5zQWS4z.jpg" alt="روينة"onclick="openModal(this)">
+            </div>
+            <div class="product-info">
+            	<h2>روينة</h2>
+            <p>حلوى جزائرية تقليدية غنية بالطاقة مصنوعة من التمر والسميد والزبدة، تقدم في المناسبات.</p>
+            <p class="price">السعر: 00€</p>
+       </div>
+              </section>
+
+        <section class="contact-section">
+            <h3>للتواصل والاستفسار</h3>
+            <p>يسعدنا تلقي استفساراتكم وطلباتكم. <br> يمكنك التواصل معنا عبر:</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/213557497242?text=مرحباً%20بكم%20في%20مملكة%20التمور." class="whatsapp-btn" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp Icon">
+                    تواصل واتساب
+                </a>
+                <a href="mailto:tecnc13000@gmail.com?subject=استفسار%20من%20موقع%20مملكة%20التمور" class="email-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Email Icon">
+                    إرسال بريد إلكتروني
+                </a>
+                <a href="https://www.facebook.com/khaal.tolgaa/" class="social-btn" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1200px-2021_Facebook_icon.svg.png" alt="Facebook Icon">
+                    فيسبوك
+                </a>
+                 <a href="https://www.instagram.com/khaal.tolgaa/" class="social-btn instagram" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram Icon">
+                    انستجرام
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 مملكة التمور. جميع الحقوق محفوظة.</p>
+        <p>🇩🇿 منتوج بلادي 🇩🇿</p>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // JavaScript for image modal
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+
+        function openModal(imgElement) {
+            modal.style.display = "block";
+            modalImg.src = imgElement.src;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
