@@ -55,7 +55,8 @@ header p {
     opacity: ; /* جعل الوصف غير شفاف تمامًا */
     /* أضف/عدل هنا: color: #AAAAAA; */
 }
-        main {
+        <main role="main">
+ {
             padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -382,24 +383,27 @@ header p {
         <p>🇩🇿 منتوج بلادي 🇩🇿</p>
     </footer>
 
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
+    <div id="imageModal" class="modal" aria-hidden="true">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
 
-    <script>
-        // JavaScript for image modal
-        var modal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("modalImage");
+<script>
+    // JavaScript for image modal
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
 
-        function openModal(imgElement) {
-            modal.style.display = "block";
-            modalImg.src = imgElement.src;
-        }
+    function openModal(imgElement) {
+        modal.style.display = "block";
+        modal.setAttribute("aria-hidden", "false"); // اجعله مرئيا لقارئ الشاشة عند الفتح
+        modalImg.src = imgElement.src;
+    }
 
-        function closeModal() {
-            modal.style.display = "none";
-        }
-    </script>
+    function closeModal() {
+        modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true"); // اجعله مخفيا عن قارئ الشاشة عند الإغلاق
+    }
+</script>
+
 </body>
 </html>
