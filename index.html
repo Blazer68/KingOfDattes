@@ -581,35 +581,38 @@ padding: 1rem;
 </div>
 
 <script>
-    
     var modal = document.getElementById("imageModal");
     var modalImg = document.getElementById("modalImage");
 
     function openModal(imgElement) {
         modal.style.display = "block";
-        modal.setAttribute("aria-hidden", "false"); 
+        modal.setAttribute("aria-hidden", "false");
         modalImg.src = imgElement.src;
     }
 
     function closeModal() {
         modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true"); 
+        modal.setAttribute("aria-hidden", "true");
     }
 </script>
-<script>
- 
-   var disqus_config = function () {
-   this.page.url = "https://king-dattes.vercel.app/";  
-   this.page.identifier = "home-page-king-dattes"; 
-   };
-   (function() { /
-   var d = document, s = d.createElement('script');
-   s.src = 'https://kingdattes.disqus.com/embed.js'; 
-   s.setAttribute('data-timestamp', +new Date());
-   (d.head || d.body).appendChild(s);
-   })();
-   </script>
-   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+<script>
+    var disqus_config = function () {
+        this.page.url = "https://king-dattes.vercel.app/";
+        this.page.identifier = "home-page-king-dattes";
+    };
+
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kingdattes.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<noscript>
+    Please enable JavaScript to view the 
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
 </body>
 </html>
