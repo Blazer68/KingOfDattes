@@ -581,33 +581,46 @@ padding: 1rem;
 </div>
 
 <script>
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("modalImage");
+// نافذة عرض الصورة (Image Modal)
+var modal = document.getElementById("imageModal");
+var modalImg = document.getElementById("modalImage");
+var modalDescription = document.getElementById("modalDescription");
 
-    function openModal(imgElement) {
-        modal.style.display = "block";
-        modal.setAttribute("aria-hidden", "false");
-        modalImg.src = imgElement.src;
+function openModal(clickedElement) {
+    modal.style.display = "block";
+    modal.setAttribute("aria-hidden", "false");
+
+    var imgElementInsideDiv = clickedElement.querySelector('img');
+    modalImg.src = imgElementInsideDiv.src;
+
+    var description = imgElementInsideDiv.getAttribute('data-description');
+    modalDescription.textContent = description;
+}
+
+function closeModal() {
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+}
+
+// غلق النافذة عند الضغط خارجها
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeModal();
     }
+};
 
-    function closeModal() {
-        modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true");
-    }
-</script>
+// إعدادات Disqus
+var disqus_config = function () {
+    this.page.url = "https://king-dattes.vercel.app/";
+    this.page.identifier = "home-page-king-dattes";
+};
 
-<script>
-    var disqus_config = function () {
-        this.page.url = "https://king-dattes.vercel.app/";
-        this.page.identifier = "home-page-king-dattes";
-    };
-
-    (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://kingdattes.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kingdattes.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
 </script>
 
 <noscript>
