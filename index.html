@@ -33,26 +33,27 @@ header::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 1; 
+    background-color: rgba(0, 0, 0, 0.5); /* طبقة سوداء شفافة لجعل النص أكثر وضوحًا */
+    z-index: 1; /* وضع الطبقة تحت النص */
 }
 
 header > * {
     position: relative;
-    z-index: 2; 
+    z-index: 2; /* وضع النص فوق الطبقة الشفافة */
 }
 
 header h1 {
     margin: 0;
-    font-size: 3.5rem; 
+    font-size: 3.5rem; /* تكبير حجم العنوان قليلاً */
     letter-spacing: 1px;
-    
+    /* أضف/عدل هنا: color: #AAAAAA; */
 }
 
 header p {
     margin: 0.5rem 0 0;
-    font-size: 1.4rem; 
-    opacity: ; 
+    font-size: 1.4rem; /* تكبير حجم الوصف قليلاً */
+    opacity: ; /* جعل الوصف غير شفاف تمامًا */
+    /* أضف/عدل هنا: color: #AAAAAA; */
 }
         <main role="main">
  {
@@ -271,9 +272,9 @@ text-align: center;
 font-size: 1.15rem;
 color: #444;
 margin-bottom: 2.5rem;
-max-width: 800px; /* لتحديد عرض النص /
+max-width: 800px; 
 margin-left: auto;
-margin-right: auto; / لتوسيطها */
+margin-right: auto; 
 padding: 1rem;
 }
         }
@@ -580,33 +581,30 @@ padding: 1rem;
 </div>
 
 <script>
-    // JavaScript for image modal
+    
     var modal = document.getElementById("imageModal");
     var modalImg = document.getElementById("modalImage");
 
     function openModal(imgElement) {
         modal.style.display = "block";
-        modal.setAttribute("aria-hidden", "false"); // اجعله مرئيا لقارئ الشاشة عند الفتح
+        modal.setAttribute("aria-hidden", "false"); 
         modalImg.src = imgElement.src;
     }
 
     function closeModal() {
         modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true"); // اجعله مخفيا عن قارئ الشاشة عند الإغلاق
+        modal.setAttribute("aria-hidden", "true"); 
     }
 </script>
 <script>
-   /**
-   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-   */
+ 
    var disqus_config = function () {
-   this.page.url = "https://king-dattes.vercel.app/";  // ضع رابط موقعك هنا
-   this.page.identifier = "home-page-king-dattes"; // معرّف فريد لهذه الصفحة
+   this.page.url = "https://king-dattes.vercel.app/";  
+   this.page.identifier = "home-page-king-dattes"; 
    };
-   (function() { // DON'T EDIT BELOW THIS LINE
+   (function() { /
    var d = document, s = d.createElement('script');
-   s.src = 'https://kingdattes.disqus.com/embed.js'; // تأكد أن kingdattes هو اسم موقعك في Disqus
+   s.src = 'https://kingdattes.disqus.com/embed.js'; 
    s.setAttribute('data-timestamp', +new Date());
    (d.head || d.body).appendChild(s);
    })();
