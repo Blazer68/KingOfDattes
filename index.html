@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مملكة التمور - مطار بسكرة</title>
+    <title>مملكة التمور</title>
     <style>
         
         body {
@@ -15,7 +15,7 @@
             line-height: 1.6;
         }
      header {
-    background-image: url('https://live.staticflickr.com/65535/54665688087_cb67dcae51_b.jpg'); /* رابط صورة المحل */
+    background-image: url('https://live.staticflickr.com/65535/54681755303_805b1903a0_z.jpg'); /* رابط صورة المحل */
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; / لمنع تكرار الصورة /
@@ -61,6 +61,41 @@ header p {
             max-width: 1200px;
             margin: 0 auto;
         }
+/* أنماط الشريط المتحرك */
+.product-strip-container {
+  overflow: hidden; /* هذا مهم جداً لإخفاء الصور خارج الإطار */
+  width: 100%;
+  background: #f3f3f3; /* لون خلفية الشريط */
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: 2rem; /* مسافة من الأعلى */
+  margin-bottom: 2rem; /* مسافة من الأسفل */
+}
+
+.product-strip {
+  display: flex; /* يجعل الصور في صف واحد */
+  flex-wrap: nowrap; /* الأهم: لمنع الصور من الالتفاف إلى سطر جديد */
+  gap: 0.5rem; /* مسافة بين الصور */
+  padding: 1rem;
+  width: max-content; /* الأهم: لجعل عرض الشريط يتمدد ليحتوي كل الصور */
+  animation: scroll-left 15s linear infinite; /* حركة التمرير - عدّل 15s حسب السرعة المرغوبة */
+}
+
+.product-strip img {
+  height: 100px; /* ارتفاع الصور في الشريط */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* لمنع الصور من الانكماش */
+}
+
+.product-strip img:hover {
+  transform: scale(1.1); /* تأثير تكبير عند المرور */
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0%); } /* يبدأ من بداية الشريط */
+  100% { transform: translateX(90%); } /* ينتهي عند منتصف الشريط لتكرار سلس */
+}
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -350,7 +385,7 @@ padding: 1rem;
     <header>
         <h1>مملكة التمور</h1>
         <p>مطار بسكرة - الجزائر</p>
-    </header>
+    </header> 
 
     <main>
     	<section class="welcome-message">
@@ -361,7 +396,39 @@ padding: 1rem;
 من قلب الصحراء الساحرة، حيث تلامس أشعة الشمس كل تمرة لتمنحها سراً من أسرار الأرض، نقدم لكم مملكة التمور.
 ليست مجرد منتجات، بل هي رحلة ذوق أصيلة. كل قطرة دبس، وكل بلورة سكر، وكل رشفة قهوة من نوى التمر، تحكي قصة نقاءٍ لا يُضاهى وجودة تفوق الخيال.
 انضموا إلينا لتكتشفوا إرث النخلة العظيم، ولتذوقوا سحر الأصالة في كل قضمة. مذاق لا يُنسى، تجربة لا تُعوّض!"
-</p>
+</p> 
+<div class="product-strip-container" id="product-strip-container">
+<div class="product-strip">
+<img src="https://live.staticflickr.com/65535/54665616770_da7d2acc6d_z.jpg" alt="زرير" >
+<img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg" alt="خل التمر">
+<img src="https://live.staticflickr.com/65535/54665526329_9f3f4e7171_z.jpg" alt="سكر التمر باليمون" >
+<img src="https://live.staticflickr.com/65535/54674311360_d127cb5b14_b.jpg  " alt="سكر التمر بالخروب">
+<img src="https://live.staticflickr.com/65535/54674311460_f09b3ca71b_b.jpg " alt="سكر" >
+<img src="https://live.staticflickr.com/65535/54674214918_b18caf2232_b.jpg" alt="شكولاطة" >
+<img src="https://live.staticflickr.com/65535/54673986326_d66aa3a066_b.jpg" alt="شكولا التمر بالمكسرات" >
+<img src="https://live.staticflickr.com/65535/54674309715_fb053088be_b.jpg" alt="زيت نواة التمر" >
+<img src="https://live.staticflickr.com/65535/54674069476_a5ecf189df_b.jpg" alt="صابون" >
+<img src="https://live.staticflickr.com/65535/54674310250_5c4aeee03a_b.jpg" alt="كحل" >
+<img src="https://live.staticflickr.com/65535/54679796148_bd1e642e31_z.jpg" alt="سكر التمر بالبرتقال" >
+<img src="https://live.staticflickr.com/65535/54674213978_acd0b70dec_z.jpg" alt="قارورة" >
+<img src="https://live.staticflickr.com/65535/54674309195_f2edd95a8a_z.jpg" alt="عسل النحل" >
+
+<img src="https://live.staticflickr.com/65535/54665616770_da7d2acc6d_z.jpg" alt="زرير" >
+<img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg" alt="خل التمر">
+<img src="https://live.staticflickr.com/65535/54665526329_9f3f4e7171_z.jpg" alt="سكر التمر باليمون" >
+<img src="https://live.staticflickr.com/65535/54674311360_d127cb5b14_b.jpg  " alt="سكر التمر بالخروب">
+<img src="https://live.staticflickr.com/65535/54674311460_f09b3ca71b_b.jpg " alt="سكر" >
+<img src="https://live.staticflickr.com/65535/54674214918_b18caf2232_b.jpg" alt="شكولاطة" >
+<img src="https://live.staticflickr.com/65535/54673986326_d66aa3a066_b.jpg" alt="شكولا التمر بالمكسرات" >
+<img src="https://live.staticflickr.com/65535/54674309715_fb053088be_b.jpg" alt="زيت نواة التمر" >
+<img src="https://live.staticflickr.com/65535/54674069476_a5ecf189df_b.jpg" alt="صابون" >
+<img src="https://live.staticflickr.com/65535/54674310250_5c4aeee03a_b.jpg" alt="كحل" >
+<img src="https://live.staticflickr.com/65535/54679796148_bd1e642e31_z.jpg" alt="سكر التمر بالبرتقال" >
+<img src="https://live.staticflickr.com/65535/54674213978_acd0b70dec_z.jpg" alt="قارورة" >
+<img src="https://live.staticflickr.com/65535/54674309195_f2edd95a8a_z.jpg" alt="عسل النحل" >
+
+</div>
+</div>
 </section>
             <section class="product-card">
                 <div class="product-image"onclick="openModal(this)">	
@@ -418,7 +485,7 @@ padding: 1rem;
                     <p>لمسة منعشة من الحمضيات لسكر التمر الطبيعي!................</p>
                        </div>
             </section>
-
+            
             <section class="product-card">
             	 <div class="product-image"onclick="openModal(this)">
                     <img src="https://live.staticflickr.com/65535/54679796148_bd1e642e31_z.jpg" alt="سكر التمر بالبرتقال" data-description="نكهة الشمس المنعشة مع حلاوة الطبيعة! سكر التمر بالبرتقال هو بديل صحي ومميز للسكر التقليدي. يجمع بين غنى التمور الطبيعية بفوائدها المتعددة، ونكهة البرتقال الزاهية والعطرية. مثالي لتحلية المشروبات الباردة والساخنة، أو لإضفاء لمسة منعشة ومغذية على المخبوزات والحلويات الخاصة بك.">
@@ -432,6 +499,7 @@ padding: 1rem;
                     <p>نكهة الشمس المنعشة مع حلاوة الطبيعة!...........</p>
                        </div>
             </section>
+            
             <section class="product-card">
             	 <div class="product-image"onclick="openModal(this)">
                     <img src="https://live.staticflickr.com/65535/54674311360_d127cb5b14_b.jpg" alt="سكر التمر بالخروب" data-description="توليفة فريدة تجمع بين حلاوة التمر الطبيعية وغنى الخروب المغذي. هذا السكر الصحي يضيف نكهة عميقة ومميزة لوصفاتك. مثالي للمخبوزات، العصائر، أو كبديل صحي للسكر التقليدي، ويقدم فوائد الخروب الغنية بالألياف.">
@@ -445,7 +513,6 @@ padding: 1rem;
                     <p>توليفة فريدة تجمع بين حلاوة التمر الطبيعية وغنى الخروب المغذي.............</p>
                     </div>
             </section>
-            
 
             <section class="product-card">
                 <div class="product-image"onclick="openModal(this)">
@@ -697,6 +764,20 @@ var disqus_config = function () {
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
 })();
+</script>
+<script>
+  const stripContainer = document.getElementById("product-strip-container"); // تم تغيير الـ id
+let animationPaused = false;
+window.addEventListener("scroll", () => {
+const scrollY = window.scrollY;
+if (scrollY > 100 && !animationPaused) {
+stripContainer.style.animationPlayState = 'paused';
+animationPaused = true;
+} else if (scrollY <= 100 && animationPaused) {
+stripContainer.style.animationPlayState = 'running';
+animationPaused = false;
+}
+});
 </script>
 
 </body>
