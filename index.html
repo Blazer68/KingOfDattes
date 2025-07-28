@@ -346,7 +346,7 @@ footer {
 .product-strip {
   display: flex;
   flex-wrap: nowrap; /* الأهم: لمنع الصور من الالتفاف إلى سطر جديد */
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 1rem;
   width: max-content; /* الأهم: لجعل عرض الشريط يتمدد ليحتوي كل الصور في صف واحد */
   animation: scroll-left 15s linear infinite; /* حركة التمرير */
@@ -411,7 +411,7 @@ footer {
 <div class="product-strip-container" id="product-strip-container">
 <div class="product-strip">
 <img src="https://live.staticflickr.com/65535/54665616770_da7d2acc6d_z.jpg" alt="زرير" >
-<img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg" alt="خل التمر">
+<img src="https://live.staticflickr.com/65535/54674212168_42407b13û42_b.jpg" alt="خل التمر">
 <img src="https://live.staticflickr.com/65535/54665526329_9f3f4e7171_z.jpg" alt="سكر التمر باليمون" >
 <img src="https://live.staticflickr.com/65535/54674311360_d127cb5b14_b.jpg  " alt="سكر التمر بالخروب">
 <img src="https://live.staticflickr.com/65535/54674311460_f09b3ca71b_b.jpg " alt="سكر" >
@@ -755,10 +755,16 @@ footer {
     };
 
     // إعدادات Disqus
-    var disqus_config = function () {
-        this.page.url = "[https://king-dattes.vercel.app/](https://king-dattes.vercel.app/)"; // تم تصحيح المسافة الزائدة هنا
-        this.page.identifier = "home-page-king-dattes";
-    };
+   var disqus_config = function () {
+   this.page.url = "https://king-dattes.vercel.app/"; // **** هكذا يجب أن يكون الرابط ****
+   this.page.identifier = "home-page-king-dattes";
+   };
+   (function() {
+   var d = document, s = d.createElement('script');
+   s.src = 'https://kingdattes.disqus.com/embed.js'; // **** هكذا يجب أن يكون الرابط ****
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+   })();
 
     (function() {
         var d = document, s = d.createElement('script');
