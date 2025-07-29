@@ -365,31 +365,9 @@ footer {
 
 @keyframes scroll-left {
   0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); } /* يتوقف عند منتصف الشريط (للتكرار السلس إذا ضاعفنا المحتوى) */
+  100% { transform: translateX(50%); } /* يتوقف عند منتصف الشريط (للتكرار السلس إذا ضاعفنا المحتوى) */
 }
 
-/* زر العودة للأعلى */
-#backToTopBtn {
-  display: none; /* مخفي افتراضياً */
-  position: fixed; /* يبقى في مكانه عند التمرير */
-  bottom: 20px; /* 20 بكسل من الأسفل */
-  right: 30px; /* 30 بكسل من اليمين */
-  z-index: 99; /* ليكون فوق العناصر الأخرى */
-  border: none; /* إزالة الحدود */
-  outline: none; /* إزالة التركيز */
-  background-color: #f4a261; /* لون الخلفية (لون التمر) */
-  color: white; /* لون النص/الأيقونة */
-  cursor: pointer; /* مؤشر اليد عند المرور */
-  padding: 15px; /* مسافة داخلية */
-  border-radius: 10px; /* حواف مستديرة */
-  font-size: 18px; /* حجم الخط */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل خفيف */
-  transition: background-color 0.3s, transform 0.3s; /* انتقال سلس */
-}
-
-#backToTopBtn:hover {
-  background-color: #e76f51; /* لون أغمق عند المرور */
-  transform: translateY(-3px); /* رفع الزر قليلاً */
 }
 </style>
 <body>
@@ -841,18 +819,7 @@ footer {
         }
     });
 
-    // زر العودة للأعلى
-    const backToTopBtn = document.getElementById("backToTopBtn");
-
-    // عند التمرير، أظهر أو أخفِ الزر
-    window.addEventListener("scroll", () => {
-      backToTopBtn.style.display =
-        window.scrollY > 20 ? "block" : "none";
-    });
-
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    
 </script>
 
    </body>
