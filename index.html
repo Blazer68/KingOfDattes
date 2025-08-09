@@ -3,7 +3,6 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>مملكة التمور - مطار بسكرة</title>
-   <link rel="icon" href="favicon.png" type="image/png">
    <style>
 /* أنماط عامة */
 body {
@@ -72,14 +71,12 @@ main {
     max-width: 800px;
     margin: 0 auto;
 }
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
-}
-
+/*
+ * تحديث تنسيق بطاقة المنتج (product-card)
+ * - استخدام "flexbox" لترتيب المحتوى
+ * - "flex-direction: column" لترتيب العناصر عمودياً
+ * - "align-items: center" لتوسيط المحتوى أفقياً
+ */
 .product-card {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
@@ -88,12 +85,14 @@ main {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer; /* لجعلها قابلة للنقر لفتح المودال */
-    display: flex; /* لتحويلها إلى flex container */
-    flex-direction: row-reverse; /* الصورة على اليمين والوصف على اليسار (لـ RTL) */
-    align-items: center; /* توسيط عمودي */
+    cursor: pointer;
     padding: 15px; /* مسافة داخلية */
     margin-bottom: 2rem; /* مسافة بين البطاقات */
+
+    /* التعديل الجديد باستخدام flexbox */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* توسيط المحتوى أفقياً */
 }
 
 .product-card:hover {
@@ -101,44 +100,102 @@ main {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.product-image {
-    width: 120px; /* حجم صغير وثابت لعرض حاوية الصورة */
-    height: auto; /* لجعل الارتفاع يتكيف مع المحتوى (الصورة، السعر، الزر) */
+/* حاوية لتجميع الصورة والزر معاً */
+.product-media-and-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px; /* مسافة بين الصورة والوصف */
+}
+
+/*
+ * تعديل حاوية الصورة (product-image-container)
+ * - تحديد حجم ثابت وصغير (مثلاً 100px)
+ */
+.product-image-container {
+    width: 150px; /* حجم الصورة الصغير */
+    height: 150px; /* حجم الصورة الصغير */
     overflow: hidden;
     position: relative;
     cursor: pointer;
     background-color: #ffffff;
-    display: flex; /* لتوسيط الصورة داخل الحاوية */
-    flex-direction: column; /* تكديس المحتوى عمودياً */
-    justify-content: center; /* توسيط عمودي */
-    align-items: center; /* توسيط أفقي */
-    margin-right: 20px; /* مسافة بين الصورة والوصف */
-    padding: 10px; /* مسافة داخلية */
-    flex-shrink: 0;
+    border-radius: 8px; /* نعومة زوايا الحاوية */
+    margin-bottom: 10px; /* مسافة بين الصورة وزر الاتصال */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* لعرض الصورة كاملة */
+/*
+ * تعديل الصورة نفسها
+ * - اجعلها تملأ الحاوية بالكامل
+ */
+.product-image-container img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain; /* "contain" للحفاظ على الأبعاد */
     display: block;
     border-radius: 4px;
     transition: transform 0.3s ease;
 }
 
-.product-image img:hover {
+.product-image-container img:hover {
     transform: scale(1.05);
 }
 
-.product-info {
-    padding: 0 15px; /* مسافة داخلية أفقية حول النص */
-    flex-grow: 1; /* لجعل هذا الجزء ينمو ويأخذ كل المساحة المتبقية */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+/*
+ * تأثير التظليل (overlay) على الصورة
+ */
+.product-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* خلفية سوداء بنسبة شفافية 30% */
+    opacity: 0; /* التظليل مخفي في الحالة العادية */
+    transition: opacity 0.3s ease; /* تأثير انسيابي عند الظهور */
+    border-radius: 8px; /* نفس نعومة الزوايا للحاوية */
 }
 
-.product-info h3 {
+.product-image-container:hover::before {
+    opacity: 1; /* إظهار التظليل عند تمرير الماوس */
+}
+
+
+/*
+ * تنسيق زر الاتصال
+ * - تم تعديل اسمه من `call-button` إلى `order-btn` ليناسب التسمية الحالية
+ */
+.order-btn {
+    background-color: #28a745; /* لون أخضر للزر */
+    color: #fff !important; /* تأكيد اللون */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    width: fit-content; /* جعل الزر يأخذ عرض المحتوى */
+}
+
+.order-btn:hover {
+    background-color: #218838;
+}
+
+/*
+ * تعديل معلومات المنتج (product-info)
+ * - إزالة "padding" الزائد
+ * - التأكد من أن المحتوى يملأ المساحة المتبقية
+ */
+.product-info {
+    text-align: center; /* توسيط النص */
+    padding: 0 15px; /* مسافة داخلية أفقية */
+}
+
+.product-info h2 {
     color: #e76f51;
     font-size: 1.5rem;
     margin-top: 0;
@@ -150,7 +207,7 @@ main {
     color: #666;
     margin-bottom: 1rem;
     line-height: 1.5; /* مسافة بين الأسطر */
-    text-align: justify; /* محاذاة النص */
+    text-align: center; /* توسيط النص */
 }
 
 .price {
@@ -158,6 +215,8 @@ main {
     color: #6a0e0e;
     font-weight: bold;
     margin-bottom: 1rem;
+    display: block; /* لضمان أخذ سطر جديد */
+    text-align: center; /* توسيط السعر */
 }
 
 .order-btn {
@@ -369,15 +428,15 @@ footer {
   100% { transform: translateX(50%); } /* يتوقف عند منتصف الشريط (للتكرار السلس إذا ضاعفنا المحتوى) */
 }
 
-}
+
 </style>
 <body>
     <header>
+    <img src="images/logo.png" alt="شعار مملكة التمور" class="header-logo">
         <h1>مملكة التمور</h1>
-        <p>مطار بسكرة - الجزائر</p>
-    </header> 
-
-    <main>
+    <p>مطار بسكرة - الجزائر</p>
+    </header>
+       <main>
     	<section class="welcome-message">
     	<h2>اهلا وسهلا بكم في مملكة التمور</h2>
        <p>مرحبا بكم في مملكة التمور   
@@ -422,315 +481,375 @@ footer {
 </div>
 </div> 
 </section>
-       <section class="product-card">
-  <div class="product-image" onclick="openModal(this)">
-    <img src="https://live.staticflickr.com/65535/54704471580_726589d935_c.jpg" alt="عجوة المدينة الأصلية"
-         data-description="عجوة المدينة النبوية، منتقاة من أطيب نخيل المدينة المنورة. تمر طبيعي 100%، معروف بطعمه المميز وفوائده الصحية. مثالي للتغذية اليومية، أو كهدية تحمل البركة والنفحة النبوية.">
-    <p class="price">السعر: €0</p> 
-    <a href="https://wa.me/213557497242?text=مرحبا%20أود%20طلب%20عجوة%20المدينة%20من%20موقع%20مملكة%20التمور"
-       target="_blank" 
-       class="order-btn" 
-       style="text-decoration: none; color: inherit; display: block; text-align: center;">
-       اطلب الآن
-    </a>
-  </div>
-
-  <div class="product-info">
-    <h2>عجوة المدينة الأصلية</h2>
-    <p>
-      تمر نبوي مبارك من قلب المدينة المنوّرة.  
-      طبيعي 100%، خالٍ من أي إضافات أو مواد حافظة.  
-      معروف بخصائصه الصحية ومذاقه الغني.  
-      اختره للغذاء، للطاقة، وللبركة في بيتك.
-    </p>
-  </div>
-       </section>
-            <section class="product-card">
-                <div class="product-image" onclick="openModal(this)">	
-                    <img src="https://live.staticflickr.com/65535/54665616750_fd78b1a856_b.jpg" alt="تمر" data-description="تمرنا الفاخر، المختار بعناية فائقة، يمثل جوهر نخل بسكرة الأصيل. طازج وجاهز للأكل، كل تمرة كنز من الطاقة الطبيعية والنكهة الحلوة، مثالية لضيافتكم الراقية، إفطاركم الصحي، أو كهدية فاخرة تحمل عبق الأصالة. يحفظ طازجاً لفترة طويلة ليمنحك مذاقاً لا يُنسى.">
-                     <p class="price">السعر: €0</p> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
-   اطلب الآن
-</a>
+              <section class="product-card">
+    <div class="product-content-wrapper">
+        <div class="product-media-and-action">
+            <div class="product-image-container" onclick="openModal(this)">
+                <img src="https://live.staticflickr.com/65535/54704471580_726589d935_c.jpg" alt="عجوة المدينة الأصلية"
+                     data-description="عجوة المدينة النبوية، منتقاة من أطيب نخيل المدينة المنورة. تمر طبيعي 100%، معروف بطعمه المميز وفوائده الصحية. مثالي للتغذية اليومية، أو كهدية تحمل البركة والنفحة النبوية.">
                 </div>
+            <a href="https://wa.me/213557497242?text=مرحبا%20أود%20طلب%20عجوة%20المدينة%20من%20موقع%20مملكة%20التمور"
+               target="_blank"
+               class="order-btn">
+               اطلب الآن
+            </a>
+        </div>
+        <div class="product-info">
+            <h2>عجوة المدينة الأصلية</h2>
+            <p>                تمر نبوي مبارك من قلب المدينة المنوّرة.                طبيعي 100%، خالٍ من أي إضافات أو مواد حافظة.                معروف بخصائصه الصحية ومذاقه الغني.                اختره للغذاء، للطاقة، وللبركة في بيتك.
+            </p>
+            <p class="price">السعر: €0</p>
+        </div>
+    </div>
+</section>
+                <section class="product-card">
+            	<div class="product-content-wrapper">
+            	      <div class="product-media-and-action">
+                <div class="product-image-container" onclick="openModal(this)">	
+                    <img src="https://live.staticflickr.com/65535/54709559259_f05400b5a5_z.jpg" alt="تمر" 
+                              data-description="تمرنا الفاخر، المختار بعناية فائقة، يمثل جوهر نخل بسكرة الأصيل. طازج وجاهز للأكل، كل تمرة كنز من الطاقة الطبيعية والنكهة الحلوة، مثالية لضيافتكم الراقية، إفطاركم الصحي، أو كهدية فاخرة تحمل عبق الأصالة. يحفظ طازجاً لفترة طويلة ليمنحك مذاقاً لا يُنسى.">
+                       </div>
+                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
+                           target="_blank" 
+                           class="order-btn" >
+     اطلب الآن.                    
+                    </a>
+                    </div>
                 <div class="product-info">
                     <h2>تمر (نوع بسكرة)</h2>
-                    <p>تمرنا الفاخر، المختار بعناية فائقة،................</p>               
+                    <p>تمرنا الفاخر، المختار بعناية فائقة،................</p>    
+                     <p class="price">السعر: €0</p>            
+                </div>
                 </div>
             </section>
             
             <section class="product-card">
-            	<div class="product-image" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54674442299_09db6711e0_b.jpg" alt="علب التمر الطازج" data-description="من نخيلنا مباشرة إلى صندوقكم، تمر طازج ومعبأ بعناية فائقة! هذه العلب الأنيقة تحافظ على جودة التمر وطزاجته، مما يجعله جاهزاً للأكل في أي وقت. مصدر طبيعي للطاقة يدوم طويلاً، مثالي للوجبات الخفيفة الصحية أو كهدية فاخرة.">
-                <p class="price">السعر: €0</p> 
-                <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	<div class="product-image-container" onclick="openModal(this)">
+            	<img src="https://live.staticflickr.com/65535/54674442299_09db6711e0_b.jpg" alt="علب التمر الطازج" 
+                          data-description="من نخيلنا مباشرة إلى صندوقكم، تمر طازج ومعبأ بعناية فائقة! هذه العلب الأنيقة تحافظ على جودة التمر وطزاجته، مما يجعله جاهزاً للأكل في أي وقت. مصدر طبيعي للطاقة يدوم طويلاً، مثالي للوجبات الخفيفة الصحية أو كهدية فاخرة.">
+               </div>
+       <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
+            target="_blank" 
+            class="order-btn" >
    اطلب الآن
 </a>
             </div>
             <div class="product-info">
             	<h2>علب التمر الطازج</h2>
             <p>من نخيلنا مباشرة إلى صندوقكم، تمر طازج ومعبأ بعناية فائقة!......</p>
+            <p class="price">السعر: €0</p>
+            </div>
             </div>
             </section>
 
             <section class="product-card">
-                <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674311460_f09b3ca71b_b.jpg" alt="سكر التمر" data-description="بديل صحي وطبيعي 100% للسكر الأبيض. مستخرج بعناية من أجود أنواع التمور، وهو غني بالمعادن والفيتامينات والألياف. مثالي لتحلية المشروبات، المخبوزات، والحلويات بطريقة صحية، ويضفي نكهة فريدة ومميزة.">
-                    <p class="price">السعر: €0</p> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+                <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54708645772_049ca0d2cc_z.jpg" alt="سكر التمر" 
+                              data-description="بديل صحي وطبيعي 100% للسكر الأبيض. مستخرج بعناية من أجود أنواع التمور، وهو غني بالمعادن والفيتامينات والألياف. مثالي لتحلية المشروبات، المخبوزات، والحلويات بطريقة صحية، ويضفي نكهة فريدة ومميزة.">
+                   </div>   
+                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
+                            target="_blank" 
+                            class="order-btn" >
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>سكر التمر</h2>
                     <p>بديل صحي للسكر الأبيض، مستخرج من التمور الطبيعية. </p>
+                    <p class="price">السعر: 1€</p>
+                </div>
                 </div>
             </section>
             
             <section class="product-card">
-            	 <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54686825675_bae6de8ee4_z.jpg" alt="سكر التمر بالليمون" data-description="لمسة منعشة من الحمضيات لسكر التمر الطبيعي! هذا السكر الصحي يجمع بين حلاوة التمور الغنية ونكهة الليمون المنعشة. مثالي لتحلية الشاي والمشروبات الصيفية، أو لإضافة نكهة فريدة للحلويات والمخبوزات، معززاً بالفوائد الطبيعية للتمور والليمون.">
-                    <p class="price">السعر: €0</p> 
-                    <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	 <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54708645782_f35869e4ab_z.jpg" alt="سكر التمر بالليمون" 
+                           data-description="لمسة منعشة من الحمضيات لسكر التمر الطبيعي! هذا السكر الصحي يجمع بين حلاوة التمور الغنية ونكهة الليمون المنعشة. مثالي لتحلية الشاي والمشروبات الصيفية، أو لإضافة نكهة فريدة للحلويات والمخبوزات، معززاً بالفوائد الطبيعية للتمور والليمون."> 
+                    </div>
+                   <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
+                        target="_blank" 
+                       class="order-btn">
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>سكر التمر بالليمون</h2>
                     <p>لمسة منعشة من الحمضيات لسكر التمر الطبيعي!................</p>
-                       </div>
+                    <p class="price">السعر: 5€</p>
+                    </div>
+                    </div>
             </section>
             
             <section class="product-card">
-            	 <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54679796148_bd1e642e31_z.jpg" alt="سكر التمر بالبرتقال" data-description="نكهة الشمس المنعشة مع حلاوة الطبيعة! سكر التمر بالبرتقال هو بديل صحي ومميز للسكر التقليدي. يجمع بين غنى التمور الطبيعية بفوائدها المتعددة، ونكهة البرتقال الزاهية والعطرية. مثالي لتحلية المشروبات الباردة والساخنة، أو لإضفاء لمسة منعشة ومغذية على المخبوزات والحلويات الخاصة بك.">
-                    <p class="price">السعر: €0</p> 
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	 <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54709476656_f91eeee78d_z.jpg" alt="سكر التمر بالبرتقال" 
+                              data-description="نكهة الشمس المنعشة مع حلاوة الطبيعة! سكر التمر بالبرتقال هو بديل صحي ومميز للسكر التقليدي. يجمع بين غنى التمور الطبيعية بفوائدها المتعددة، ونكهة البرتقال الزاهية والعطرية. مثالي لتحلية المشروبات الباردة والساخنة، أو لإضفاء لمسة منعشة ومغذية على المخبوزات والحلويات الخاصة بك.">
+                    </div>
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+                           target="_blank" 
+                            class="order-btn" >
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>سكر التمر بالبرتقال</h2>
                     <p>نكهة الشمس المنعشة مع حلاوة الطبيعة!...........</p>
+                    <p class="price">السعر: ٥٠٠ دج</p>
+                    </div>
                        </div>
             </section>
             
             <section class="product-card">
-            	 <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54673994356_2aa4099a6f_c.jpg" alt="سكر التمر بالخروب" data-description="توليفة فريدة تجمع بين حلاوة التمر الطبيعية وغنى الخروب المغذي. هذا السكر الصحي يضيف نكهة عميقة ومميزة لوصفاتك. مثالي للمخبوزات، العصائر، أو كبديل صحي للسكر التقليدي، ويقدم فوائد الخروب الغنية بالألياف.">
-                    <p class="price">السعر: €0</p> 
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	 <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54709811780_ef3f3eab5a_z.jpg" alt="سكر التمر بالخروب" 
+                              data-description="توليفة فريدة تجمع بين حلاوة التمر الطبيعية وغنى الخروب المغذي. هذا السكر الصحي يضيف نكهة عميقة ومميزة لوصفاتك. مثالي للمخبوزات، العصائر، أو كبديل صحي للسكر التقليدي، ويقدم فوائد الخروب الغنية بالألياف.">
+                   </div>
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>سكر التمر بالخروب</h2>
                     <p>توليفة فريدة تجمع بين حلاوة التمر الطبيعية وغنى الخروب المغذي.............</p>
+                    <p class="price">السعر: €0</p>
+                    </div>
                     </div>
             </section>
 
             <section class="product-card">
-                <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674294920_27d67d1a7b_b.jpg" alt="دبس التمر" data-description="خلاصة النقاء والطاقة! دبس التمر الفاخر (روب) هو محلي طبيعي 100% مستخلص من أجود تمورنا، بدون أي إضافات صناعية. غني بالحديد، البوتاسيوم، والفيتامينات. مثالي لإضافة نكهة الأصالة إلى إفطارك، أو مع الفطائر، أو كمكون صحي في وصفاتك المفضلة.">
-                    <p class="price">السعر: €0</p> 
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+                <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54674294920_27d67d1a7b_b.jpg" alt="دبس التمر" 
+                              data-description="خلاصة النقاء والطاقة! دبس التمر الفاخر (روب) هو محلي طبيعي 100% مستخلص من أجود تمورنا، بدون أي إضافات صناعية. غني بالحديد، البوتاسيوم، والفيتامينات. مثالي لإضافة نكهة الأصالة إلى إفطارك، أو مع الفطائر، أو كمكون صحي في وصفاتك المفضلة.">
+                    </div> 
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn" >
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>دبس التمر</h2>
                     <p>خلاصة النقاء والطاقة! دبس التمر الفاخر (روب)...............</p>
+                    <p class="price">السعر: €0</p>
+                    </div>
                     </div>
             </section>
             
             <section class="product-card">
-            	 <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674308615_2f53523a0e_b.jpg" alt="عسل التمر الخالص" data-description="عسل التمر الطبيعي النقي 100%، تحفة من خيرات النخيل. هذا العسل الذهبي، المستخلص من رحيق التمر، يقدم طعماً فريداً ومغذياً غنياً بالفيتامينات والمعادن. مثالي لتحلية الشاي، أو على الخبز، أو كمعزز للطاقة الطبيعية في يومك.">
-                    <p class="price">السعر: €0</p> 
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	 <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54674308615_2f53523a0e_b.jpg" alt="عسل التمر الخالص" 
+                              data-description="عسل التمر الطبيعي النقي 100%، تحفة من خيرات النخيل. هذا العسل الذهبي، المستخلص من رحيق التمر، يقدم طعماً فريداً ومغذياً غنياً بالفيتامينات والمعادن. مثالي لتحلية الشاي، أو على الخبز، أو كمعزز للطاقة الطبيعية في يومك.">
+                    </div> 
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>عسل التمر الخالص</h2>
                     <p>عسل التمر الطبيعي النقي 100%، تحفة من خيرات النخيل..........</p>
+                    <p class="price">السعر: €0</p>
+                    </div>
                     </div>
             </section>
 
             <section class="product-card">
-                <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg" alt="خل التمر" data-description="خل التمر العضوي، مصنوع من أجود أنواع التمور، وهو إضافة صحية لمطبخك. يستخدم في تتبيل السلطات، المخللات، وله فوائد صحية عديدة كالمساعدة في الهضم وتنظيم السكر.">
-                    <p class="price">السعر: €0</p> 
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+                <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg" alt="خل التمر" 
+                            data-description="خل التمر العضوي، مصنوع من أجود أنواع التمور، وهو إضافة صحية لمطبخك. يستخدم في تتبيل السلطات، المخللات، وله فوائد صحية عديدة كالمساعدة في الهضم وتنظيم السكر.">
+                    </div>
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>خل التمر</h2>
                     <p>خل التمر العضوي، نكهة فريدة وفوائد متعددة لمطبخك.............</p>
+                    <p class="price">السعر: €0</p>
+                    </div>
                     </div>
             </section>
 
             <section class="product-card">
-                <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54673986656_2a489afd9f_b.jpg" alt="قهوة نوى التمر" data-description="بديل صحي وخالٍ من الكافيين للقهوة التقليدية! مصنوعة من بذور التمر المحمصة والمطحونة بعناية. غنية بمضادات الأكسدة والألياف، ولها نكهة ترابية فريدة ومميزة. مثالية لمن يبحث عن مشروب دافئ، مغذٍ، وصحي بدون الكافيين.">
-                    <p class="price">السعر: €0</p> 
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+                <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54673986656_2a489afd9f_b.jpg" alt="قهوة نوى التمر" 
+                          data-description="بديل صحي وخالٍ من الكافيين للقهوة التقليدية! مصنوعة من بذور التمر المحمصة والمطحونة بعناية. غنية بمضادات الأكسدة والألياف، ولها نكهة ترابية فريدة ومميزة. مثالية لمن يبحث عن مشروب دافئ، مغذٍ، وصحي بدون الكافيين.">
+                    </div> 
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>قهوة نوى التمر</h2>
                     <p>بديل صحي وخالٍ من الكافيين للقهوة التقليدية!..................</p>
+                    <p class="price">السعر: €0</p>
+                    </div>
                     </div>
             </section>
             
             <section class="product-card">
-                <div class="product-image" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674223364_3c30150f0c_z.jpg" alt="زرير" data-description="سحر الأصالة والطاقة! زرير هو حلوى جزائرية تقليدية عريقة، تُحضّر بعناية فائقة من مكونات طبيعية غنية: التمر الفاخر، السميد المحمص، والزبدة النقية. مثالي لتقديم الطاقة الفورية، ويُعد طبقاً لا غنى عنه في المناسبات والأعياد، يقدم دفئاً وحلاوة لا تُنسى.">
-                    <p class="price">السعر: €0</p> 
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+                <div class="product-image-container" onclick="openModal(this)">
+                    <img src="https://live.staticflickr.com/65535/54674223364_3c30150f0c_z.jpg" alt="زرير" 
+                           data-description="سحر الأصالة والطاقة! زرير هو حلوى جزائرية تقليدية عريقة، تُحضّر بعناية فائقة من مكونات طبيعية غنية: التمر الفاخر، السميد المحمص، والزبدة النقية. مثالي لتقديم الطاقة الفورية، ويُعد طبقاً لا غنى عنه في المناسبات والأعياد، يقدم دفئاً وحلاوة لا تُنسى.">
+                    </div> 
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
                 </div>
                 <div class="product-info">
                     <h2>زرير</h2>
                     <p>سحر الأصالة والطاقة! زرير هو حلوى جزائرية تقليدية...........</p>
+                    <p class="price">السعر: €0</p>
+                    </div>
                     </div>
             </section>
             
             <section class="product-card">
-            	<div class="product-image" onclick="openModal(this)">
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	<div class="product-image-container" onclick="openModal(this)">
             	<img src="https://live.staticflickr.com/65535/54673994356_2aa4099a6f_b.jpg" alt="روينة" data-description="وقود صحي من قلب التراث! الروينة هي مزيج تقليدي مغذٍ، مصنوع من قمح محمّص ومطحون بعناية، مضافاً إليه خلاصة التمور الغنية. مثالية كوجبة إفطار سريعة، أو إضافة غنية للعصائر والحلويات. تمنحك طاقة مستدامة طوال اليوم ونكهة أصيلة تعود بك للزمن الجميل.">
-            <p class="price">السعر: €0</p> 
+            </div> 
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
             </div>
             <div class="product-info">
             	<h2>روينة</h2>
             <p>وقود صحي من قلب التراث! الروينة هي مزيج تقليدي مغذٍ،.................</p>
+            <p class="price">السعر: €0</p>
+            </div>
             </div>
               </section>
 
             <section class="product-card">
-            	<div class="product-image" onclick="openModal(this)">
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	<div class="product-image-container" onclick="openModal(this)">
             	<img src="https://live.staticflickr.com/65535/54674310250_5c4aeee03a_b.jpg" alt="كحل تقليدي" data-description="جمال طبيعي من قلب الصحراء! كحل نواة التمر التقليدي مصنوع يدوياً من بذور التمر المحمصة بعناية ومطحونة بدقة. يعطي مظهراً جذاباً للعيون ويستخدم منذ القدم لفوائده في تقوية البصر وتطهير العين، وهو طبيعي 100% وآمن.">
-            <p class="price">السعر: €0</p> 
+            </div> 
                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
             </div>
             <div class="product-info">
             	<h2>كحل تقليدي</h2>
             <p>جمال طبيعي من قلب الصحراء! كحل نواة التمر التقليدي.............</p>
+            <p class="price">السعر: €0</p>
+            </div>
            </div>
             </section>
 
             <section class="product-card">
-            	<div class="product-image" onclick="openModal(this)">
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	<div class="product-image-container" onclick="openModal(this)">
             	<img src="https://live.staticflickr.com/65535/54674309715_fb053088be_b.jpg" alt="زيت نوات التمر" data-description="سائل الذهب الخالص من قلب النواة! زيت نواة التمر البكر يُستخرج بالضغط البارد من بذور التمر. غني بمضادات الأكسدة، فيتامين E، والأحماض الدهنية الأساسية. مثالي لترطيب البشرة والشعر، ومحاربة علامات الشيخوخة، ويمكن استخدامه في بعض الوصفات الغذائية الصحية.">
-                <p class="price">السعر: €0</p> 
+                </div> 
                 <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
             </div>
             <div class="product-info">
             	<h2>زيت نواة التمر</h2>
             <p>سائل الذهب الخالص من قلب النواة! زيت نواة التمر...............</p>
+            <p class="price">السعر: €0</p>
+            </div>
             </div>
             </section>
             
                <section class="product-card">
-            	<div class="product-image" onclick="openModal(this)">
+               	<div class="product-content-wrapper">
+               	<div class="product-media-and-action">
+            	<div class="product-image-container" onclick="openModal(this)">
             	<img src="https://live.staticflickr.com/65535/54674069476_a5ecf189df_b.jpg" alt="صابون التمر" data-description="نضارة الصحراء في قالب! صابون التمر الطبيعي يجمع بين قوة التمر المغذية وخصائص الزيوت الطبيعية الفاخرة. ينظف بشرتك بلطف، يرطبها بعمق، ويتركها ناعمة، نضرة، ومشرقة. استمتع بتجربة استحمام فريدة تمنح بشرتك العناية الفائقة التي تستحقها.">
-                <p class="price">السعر: €0</p> 
+                </div> 
                 <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
             </div>
             <div class="product-info">
             	<h2>صابون التمر</h2>
             <p>نضارة الصحراء في قالب! صابون التمر الطبيعي...............</p>
+            <p class="price">السعر: €0</p>
+            </div>
             </div>
             </section>
             
             <section class="product-card">
-            	<div class="product-image" onclick="openModal(this)">
+            	<div class="product-content-wrapper">
+            	<div class="product-media-and-action">
+            	<div class="product-image-container" onclick="openModal(this)">
             	<img src="https://live.staticflickr.com/65535/54674214918_b18caf2232_b.jpg" alt="شكولاطة التمر" data-description="تناغم مثالي بين الطاقة واللذة! اكتشفوا شوكولاتة التمر الفاخرة، حيث يلتقي سحر التمر الطبيعي المختار بعناية بترف الشوكولاتة الغنية. كل قطعة هي دعوة لتجربة فريدة تجمع بين المذاق الحلو المغذي وقوام الشوكولاتة الذائب. مثالية كوجبة خفيفة، أو هدية مميزة، أو ببساطة للانغماس في لحظة من المتعة الخالصة.">
-                <p class="price">السعر: €0</p> 
+                </div> 
                <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
             </div>
             <div class="product-info">
             	<h2>شكولاطة التمر</h2>
             <p>تناغم مثالي بين الطاقة واللذة! اكتشفوا شوكولاتة...............</p>
+            <p class="price">السعر: €0</p>
+            </div>
             </div>
             </section>
  
               <section class="product-card">
-            	<div class="product-image" onclick="openModal(this)">
+              	<div class="product-content-wrapper">
+              	<div class="product-media-and-action">
+            	<div class="product-image-container" onclick="openModal(this)">
             	<img src="https://live.staticflickr.com/65535/54673986326_d66aa3a066_b.jpg" alt="التمر المحشي بالمكسرات" data-description="مذاق الفخامة في كل قضمة! تمراتنا الفاخرة، المختارة بعناية، تتحول إلى تحفة فنية بعد حشوها بمزيج غني من المكسرات الطبيعية الفاخرة (مثل اللوز، الجوز، الفستق) والشوكولاتة النقية (حسب النوع). كل قطعة هي تجربة مذاق فريدة، تجمع بين حلاوة التمر الأصيلة وقوام الحشوة الغني. مثالي لضيافتكم الراقية أو كهدية تترك أثراً لا يُنسى.">
-                <p class="price">السعر: €0</p> 
+                </div> 
                 <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
    target="_blank" 
-   class="order-btn" 
-   style="text-decoration: none; color: inherit; display: block; text-align: center;">
+   class="order-btn">
    اطلب الآن
 </a>
             </div>
             <div class="product-info">
             	<h2>التمر المحشي بالمكسرات</h2>
             <p>مذاق الفخامة في كل قضمة! تمراتنا الفاخرة، المختارة بعناية،............</p>
+            <p class="price">السعر: €0</p>
+            </div>
             </div>
             </section>
             
@@ -848,9 +967,4 @@ footer {
 
    </body>
    </html>
-
-
-
-
-
 
