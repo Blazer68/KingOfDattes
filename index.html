@@ -1,1003 +1,763 @@
 <!DOCTYPE html>
-   <html lang="ar" dir="rtl"> <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>مملكة التمور - مطار بسكرة</title>
-   <style>
-/* أنماط عامة */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
-}
-      /* تنسيقات الشعار في رأس الصفحة */
-.header-logo {
-    width: 150px; /* يمكنك تغيير الحجم حسب الحاجة */
-    height: auto; /* للحفاظ على نسب الصورة */
-    display: block; /* لجعل الصورة عنصرًا على سطر منفصل */
-    margin: 0 auto 1rem; /* التوسيط: '0 auto' يجعل الهوامش الأفقية متساوية */
-    border-radius: 50%; /* لجعل الشعار دائرياً */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل بسيط */
-}
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>مملكة التمور | مطار بسكرة - منتجات التمور الفاخرة</title>
+    <meta name="description" content="مملكة التمور - وجهتك الأولى لأجود منتجات التمور العضوية في مطار بسكرة، الجزائر. تمر، دبس، سكر تمر، زيت نواة، شوكولاتة التمر والمزيد.">
+    <meta name="keywords" content="تمر, بسكرة, تمور عضوية, دبس التمر, سكر التمر, زيت نواة التمر, مملكة التمور, الجزائر">
+    <meta name="author" content="مملكة التمور">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Cairo', 'Arial', sans-serif;
+            background: #fef7f0;
+            color: #2d2a24;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
 
-header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                      url('https://live.staticflickr.com/65535/54706192323_d66b3d6209_b.jpg'); /* صورة المحل*/
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    color: white;
-    padding: 4rem 1rem;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-bottom: 5px solid #f4a261;
-}
+        /* تنسيقات عامة */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-header h1 {
-    margin: 0;
-    font-size: 3rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
+        /* الهيدر الجذاب */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.4)), url('https://live.staticflickr.com/65535/54706192323_d66b3d6209_b.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            border-bottom: 6px solid #d4a373;
+        }
 
-header p {
-    font-size: 1.3rem;
-    margin-top: 0.8rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-}
+        .hero-content {
+            padding: 2rem;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(3px);
+            border-radius: 40px;
+            display: inline-block;
+            animation: fadeInUp 0.9s ease-out;
+        }
 
-main {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #fff7e8;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
 
-.welcome-message {
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 2rem;
-}
+        .hero p {
+            font-size: 1.5rem;
+            color: #ffefcf;
+            font-weight: 500;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
 
-.welcome-message h2 {
-    color: #e76f51;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
+        .logo-circle {
+            width: 130px;
+            height: 130px;
+            margin: -90px auto 20px auto;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            border: 4px solid #d4a373;
+            position: relative;
+            z-index: 10;
+        }
 
-.welcome-message p {
-    font-size: 1.1rem;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto;
-}
-/*
- * تحديث تنسيق بطاقة المنتج (product-card)
- * - استخدام "flexbox" لترتيب المحتوى
- * - "flex-direction: column" لترتيب العناصر عمودياً
- * - "align-items: center" لتوسيط المحتوى أفقياً
- */
-.product-card {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    padding: 15px; /* مسافة داخلية */
-    margin-bottom: 2rem; /* مسافة بين البطاقات */
+        .logo-circle img {
+            width: 100px;
+            border-radius: 50%;
+        }
 
-    /* التعديل الجديد باستخدام flexbox */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* توسيط المحتوى أفقياً */
-}
+        /* رسالة ترحيب أنيقة */
+        .welcome-card {
+            background: white;
+            border-radius: 48px;
+            padding: 2rem 2rem;
+            margin: 2rem 0 1rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #fae1bd;
+        }
 
-.product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
+        .welcome-card h2 {
+            color: #b6622e;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
 
-/* حاوية لتجميع الصورة والزر معاً */
-.product-media-and-action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px; /* مسافة بين الصورة والوصف */
-}
+        .welcome-card p {
+            font-size: 1.1rem;
+            color: #4a3b2c;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
 
-/*
- * تعديل حاوية الصورة (product-image-container)
- * - تحديد حجم ثابت وصغير (مثلاً 100px)
- */
-.product-image-container {
-    width: 150px; /* حجم الصورة الصغير */
-    height: 150px; /* حجم الصورة الصغير */
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    background-color: #ffffff;
-    border-radius: 8px; /* نعومة زوايا الحاوية */
-    margin-bottom: 10px; /* مسافة بين الصورة وزر الاتصال */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        /* شريط المنتجات المتحرك (لا نهائي سلس) */
+        .marquee-wrapper {
+            background: linear-gradient(90deg, #f8e4cf, #fff3e6);
+            padding: 1rem 0;
+            border-radius: 60px;
+            margin: 40px 0 30px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
 
-/*
- * تعديل الصورة نفسها
- * - اجعلها تملأ الحاوية بالكامل
- */
-.product-image-container img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain; /* "contain" للحفاظ على الأبعاد */
-    display: block;
-    border-radius: 4px;
-    transition: transform 0.3s ease;
-}
+        .marquee-track {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            animation: scrollMarquee 28s linear infinite;
+        }
 
-.product-image-container img:hover {
-    transform: scale(1.05);
-}
+        .marquee-track img {
+            height: 100px;
+            width: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transition: 0.25s ease;
+            cursor: pointer;
+            object-fit: cover;
+        }
 
-/*
- * تأثير التظليل (overlay) على الصورة
- */
-.product-image-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.3); /* خلفية سوداء بنسبة شفافية 30% */
-    opacity: 0; /* التظليل مخفي في الحالة العادية */
-    transition: opacity 0.3s ease; /* تأثير انسيابي عند الظهور */
-    border-radius: 8px; /* نفس نعومة الزوايا للحاوية */
-}
+        .marquee-track img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.02);
+        }
 
-.product-image-container:hover::before {
-    opacity: 1; /* إظهار التظليل عند تمرير الماوس */
-}
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
+        /* شبكة المنتجات (احترافية) */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
 
-/*
- * تنسيق زر الاتصال
- * - تم تعديل اسمه من `call-button` إلى `order-btn` ليناسب التسمية الحالية
- */
-.order-btn {
-    background-color: #28a745; /* لون أخضر للزر */
-    color: #fff !important; /* تأكيد اللون */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    width: fit-content; /* جعل الزر يأخذ عرض المحتوى */
-}
+        .product-card {
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid #f3e0ce;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
 
-.order-btn:hover {
-    background-color: #218838;
-}
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.2);
+            border-color: #d4a373;
+        }
 
-/*
- * تعديل معلومات المنتج (product-info)
- * - إزالة "padding" الزائد
- * - التأكد من أن المحتوى يملأ المساحة المتبقية
- */
-.product-info {
-    text-align: center; /* توسيط النص */
-    padding: 0 15px; /* مسافة داخلية أفقية */
-}
+        .product-img-wrapper {
+            background: #fef3e8;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-.product-info h2 {
-    color: #e76f51;
-    font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
+        .product-img-wrapper img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
 
-.product-info p {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 1rem;
-    line-height: 1.5; /* مسافة بين الأسطر */
-    text-align: center; /* توسيط النص */
-}
+        .product-img-wrapper img:hover {
+            transform: scale(1.03);
+        }
 
-.price {
-    font-size: 1.3rem;
-    color: #6a0e0e;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    display: block; /* لضمان أخذ سطر جديد */
-    text-align: center; /* توسيط السعر */
-}
+        .product-info {
+            padding: 1.2rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-.order-btn {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
+        .product-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #8b4a23;
+            margin-bottom: 0.5rem;
+        }
 
-.order-btn:hover {
-    background-color: #45a049;
-}
+        .product-desc {
+            color: #5a4a38;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
 
-.contact-section {
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: #f9f9f9;
-    border-top: 1px solid #eee;
-    margin-top: 2rem;
-}
+        .price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #a15225;
+            margin: 0.6rem 0;
+        }
 
-.contact-section h3 {
-    color: #e76f51;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
+        .product-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
 
-.contact-section p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 1.5rem;
-}
+        .btn {
+            border: none;
+            padding: 0.7rem 0;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            flex: 1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
 
-.contact-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
+        .btn-primary {
+            background: #2a9d8f;
+            color: white;
+        }
 
-.contact-buttons a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 1.8rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        .btn-primary:hover {
+            background: #21867a;
+            transform: scale(0.97);
+        }
 
-.contact-buttons a img {
-    height: 24px;
-    width: 24px;
-}
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
 
-.whatsapp-btn {
-    background-color: #075E54;
-}
+        .btn-whatsapp:hover {
+            background: #1da851;
+        }
 
-.whatsapp-btn:hover {
-    background-color: #1DA851;
-    transform: translateY(-3px);
-}
+        /* سلة الطلبات الجانبية (ذكية) */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -380px;
+            width: 380px;
+            height: 100vh;
+            background: #fff8f0;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e2cbb4;
+        }
 
-.email-btn {
-    background-color: #B03A2F;
-}
+        .cart-sidebar.open {
+            left: 0;
+        }
 
-.email-btn:hover {
-    background-color: #B03A2F;
-    transform: translateY(-3px);
-}
+        .cart-header {
+            background: #b6622e;
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.social-btn {
-    background-color: #3b5998; /* Facebook Blue */
-}
+        .cart-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
 
-.social-btn:hover {
-    background-color: #365899;
-    transform: translateY(-3px);
-}
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
 
-.social-btn.instagram {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-}
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
 
-.social-btn.instagram:hover {
-    transform: translateY(-3px);
-}
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 0.7rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
 
-footer {
-    background-color: #264653;
-    color: white;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    margin-top: 2rem;
-    font-size: 0.9rem;
-}
+        .cart-item-info {
+            flex: 2;
+        }
 
-/* أنماط النافذة المنبثقة (Modal) */
-.modal {
-    display: none; /* مخفي افتراضياً */
-    position: fixed; /* يبقى في مكانه */
-    z-index: 1000; /* فوق كل شيء */
-    left: 0;
-    top: 0;
-    width: 100%; /* عرض كامل */
-    height: 100%; /* ارتفاع كامل */
-    overflow: auto; /* يسمح بالتمرير إذا كان المحتوى كبيراً */
-    background-color: rgba(0, 0, 0, 0.8); /* خلفية سوداء شفافة */
-    justify-content: center; /* توسيط المحتوى أفقياً */
-    align-items: center; /* توسيط المحتوى عمودياً */
-    padding: 50px; /* مسافة داخلية */
-    box-sizing: border-box; /* لضمان أن padding لا يؤثر على العرض/الارتفاع */
-}
+        .cart-item-name {
+            font-weight: 700;
+            color: #4a2e1e;
+        }
 
-.modal-content-container {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 15px;
-    border-radius: 8px;
-    max-width: 600px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    max-height: 90vh; /* تحديد أقصى ارتفاع للمودال */
-    overflow: hidden; /* إخفاء أي محتوى يتجاوز */
-}
+        .cart-item-qty {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
 
-.modal-content {
-    width: 100%;
-    height: auto;
-    max-height: 50vh; /* تحديد أقصى ارتفاع للصورة داخل المودال */
-    object-fit: contain; /* للحفاظ على نسبة العرض إلى الارتفاع */
-    display: block;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
+        .cart-item-qty button {
+            background: #f0d5bc;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-.modal-description {
-    padding: 20px;
-    text-align: center;
-    color: #333;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    overflow-y: auto; /* تمكين التمرير لوصف طويل */
-}
+        .cart-total {
+            padding: 1rem;
+            background: #f2e3d5;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
 
-.close {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-    z-index: 101; /* ليكون فوق الصورة */
-}
+        .cart-buttons {
+            padding: 1rem;
+            display: flex;
+            gap: 0.8rem;
+        }
 
-.close:hover,
-.close:focus {
-    color: #e76f51;
-    text-decoration: none;
-    cursor: pointer;
-}
+        .cart-buttons .btn {
+            flex: 1;
+        }
 
-/* شريط المنتجات المتحرك */
-.product-strip-container {
-  overflow: hidden;
-  width: 100%;
-  background: #f3f3f3;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
+        .cart-icon {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #d4a373;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: 0.2s;
+        }
 
-.product-strip {
-  display: flex;
-  flex-wrap: nowrap; /* الأهم: لمنع الصور من الالتفاف إلى سطر جديد */
-  gap: 0.5rem;
-  padding: 1rem;
-  width: max-content; /* الأهم: لجعل عرض الشريط يتمدد ليحتوي كل الصور في صف واحد */
-  animation: scroll-left 15s linear infinite; /* حركة التمرير */
-}
+        .cart-icon span {
+            background: #b64926;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -8px;
+            right: -5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
 
-.product-strip img {
-  height: 100px;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-  flex-shrink: 0; /* لمنع الصور من الانكماش */
-}
+        /* المودال المطور */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1100;
+            justify-content: center;
+            align-items: center;
+        }
 
-.product-strip img:hover {
-  transform: scale(1.1);
-}
+        .modal-card {
+            background: white;
+            width: 90%;
+            max-width: 550px;
+            border-radius: 48px;
+            overflow: hidden;
+            direction: rtl;
+            animation: fadeIn 0.2s;
+        }
 
-@keyframes scroll-left {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(50%); } /* يتوقف عند منتصف الشريط (للتكرار السلس إذا ضاعفنا المحتوى) */
-}
+        .modal-card img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            background: #faf0e6;
+            padding: 1rem;
+        }
 
+        .modal-body {
+            padding: 1.5rem;
+            text-align: center;
+        }
 
-</style>
+        .close-modal {
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0.8rem 1.2rem;
+        }
+
+        /* تواصل */
+        .contact-section {
+            background: linear-gradient(145deg, #f8ebdd, #fff3e8);
+            border-radius: 50px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+        }
+
+        footer {
+            background: #2d2a24;
+            color: #e9dccc;
+            text-align: center;
+            padding: 2rem;
+            border-top: 5px solid #c28a5c;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95);}
+            to { opacity: 1; transform: scale(1);}
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.4rem; }
+            .cart-sidebar { width: 100%; left: -100%; }
+            .products-grid { gap: 1rem; }
+        }
+
+        /* تمكين Responsive */
+        .btn-sm { font-size: 0.8rem; }
+    </style>
+</head>
 <body>
-    <header>
+
+<div class="hero">
+    <div class="hero-content">
         <h1>مملكة التمور</h1>
-    <p>مطار بسكرة - الجزائر</p>
-    </header>
-       <main>
-          <img src="images/logo.png" alt="شعار مملكة التمور" class="header-logo">
-    	<section class="welcome-message">
-    	<h2>اهلا وسهلا بكم في مملكة التمور</h2>
-       <p>مرحبا بكم في مملكة التمور   
-       <br>
-"انغمسوا في فخامة الطبيعة... هنا حيث يولد التمر ملكاً!       
-من قلب الصحراء الساحرة، حيث تلامس أشعة الشمس كل تمرة لتمنحها سراً من أسرار الأرض، نقدم لكم مملكة التمور.
-ليست مجرد منتجات، بل هي رحلة ذوق أصيلة. كل قطرة دبس، وكل بلورة سكر، وكل رشفة قهوة من نوى التمر، تحكي قصة نقاءٍ لا يُضاهى وجودة تفوق الخيال.
-انضموا إلينا لتكتشفوا إرث النخلة العظيم، ولتذوقوا سحر الأصالة في كل قضمة. مذاق لا يُنسى، تجربة لا تُعوّض!"
-        </p> 
-        
-<div class="product-strip-container" id="product-strip-container">
-<div class="product-strip">
-<img src="https://live.staticflickr.com/65535/54674223364_3c30150f0c_z.jpg"    alt="زرير" >
-<img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg"   alt="خل التمر">
-<img src="https://live.staticflickr.com/65535/54686825675_bae6de8ee4_z.jpg"     alt="سكر التمر باليمون" >
-<img src="https://live.staticflickr.com/65535/54709811780_ef3f3eab5a_z.jpg"   alt="سكر التمر بالخروب" > 
-<img src="https://live.staticflickr.com/65535/54674311460_f09b3ca71b_b.jpg"   alt="سكر" >
-<img src="https://live.staticflickr.com/65535/54674214918_b18caf2232_b.jpg"    alt="شكولاطة" >
-<img src="https://live.staticflickr.com/65535/54673986326_d66aa3a066_b.jpg"   alt="شكولا التمر بالمكسرات" >
-<img src="https://live.staticflickr.com/65535/54674309715_fb053088be_b.jpg"    alt="زيت نواة التمر" >
-<img src="https://live.staticflickr.com/65535/54674069476_a5ecf189df_b.jpg"     alt="صابون" >
-<img src="https://live.staticflickr.com/65535/54674310250_5c4aeee03a_b.jpg"    alt="كحل" >
-<img src="https://live.staticflickr.com/65535/54679796148_bd1e642e31_z.jpg"    alt="سكر التمر بالبرتقال" >
-<img src="https://live.staticflickr.com/65535/54674213978_acd0b70dec_z.jpg"    alt="قارورة" >
-<img src="https://live.staticflickr.com/65535/54674309195_f2edd95a8a_z.jpg"     alt="عسل النحل" >
-<img src="https://live.staticflickr.com/65535/54674223364_3c30150f0c_z.jpg"    alt="زرير" >
-<img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg"   alt="خل التمر">
-<img src="https://live.staticflickr.com/65535/54686825675_bae6de8ee4_z.jpg"     alt="سكر التمر باليمون" >
-<img src="https://live.staticflickr.com/65535/54709811780_ef3f3eab5a_z.jpg"   alt="سكر التمر بالخروب" > 
-<img src="https://live.staticflickr.com/65535/54674311460_f09b3ca71b_b.jpg"   alt="سكر" >
-<img src="https://live.staticflickr.com/65535/54674214918_b18caf2232_b.jpg"    alt="شكولاطة" >
-<img src="https://live.staticflickr.com/65535/54673986326_d66aa3a066_b.jpg"   alt="شكولا التمر بالمكسرات" >
-<img src="https://live.staticflickr.com/65535/54674309715_fb053088be_b.jpg"    alt="زيت نواة التمر" >
-<img src="https://live.staticflickr.com/65535/54674069476_a5ecf189df_b.jpg"     alt="صابون" >
-<img src="https://live.staticflickr.com/65535/54674310250_5c4aeee03a_b.jpg"    alt="كحل" >
-<img src="https://live.staticflickr.com/65535/54679796148_bd1e642e31_z.jpg"    alt="سكر التمر بالبرتقال" >
-<img src="https://live.staticflickr.com/65535/54674213978_acd0b70dec_z.jpg"    alt="قارورة" >
-<img src="https://live.staticflickr.com/65535/54674309195_f2edd95a8a_z.jpg"     alt="عسل النحل" >
-
-
-
+        <p>مطار بسكرة - الجزائر ✨</p>
+    </div>
 </div>
-</div> 
-</section>
-              <section class="product-card">
-    <div class="product-content-wrapper">
-        <div class="product-media-and-action">
-            <div class="product-image-container" onclick="openModal(this)">
-                <img src="https://live.staticflickr.com/65535/54708727122_1c0e17085b_c.jpg" alt="عجوة المدينة الأصلية"
-                     data-description="عجوة المدينة — أو كما يسميها البعض الملكة التمور — ليست مجرد تمرة لذيذة، بل هي مزيج بين الغذاء والدواء، وارتبطت بتراث المدينة المنورة وبأحاديث نبوية عن بركتها.
-إليك أبرز فوائدها:
-1. غذاء كامل وصحي
-تحتوي على مزيج متوازن من السكريات الطبيعية (الجلوكوز والفركتوز)، الألياف، البروتينات، والفيتامينات، ما يجعلها وجبة طاقة طبيعية.
-2. الوقاية والدعم المناعي
-غنية بمضادات الأكسدة التي تساعد على تقوية الجهاز المناعي ومقاومة الالتهابات.
-3. حماية الجهاز الهضمي
-أليافها تساعد على تحسين الهضم ومنع الإمساك، وتلطف بطانة المعدة.
-4. مصدر للمعادن المهمة
-تمد الجسم بالبوتاسيوم، المغنيسيوم، الحديد، والكالسيوم، وهي ضرورية لصحة القلب والعظام.
-5. دعم صحة الدماغ
-احتواؤها على فيتامين B6 ومضادات الأكسدة يساعد على تحسين التركيز والذاكرة.
-6. ميزة روحية وتراثية
-ورد في الحديث النبوي: من تصبح بسبع تمرات عجوة لم يضره ذلك اليوم سم ولا سحر ¤رواه البخاري ومسلم¤، مما جعلها رمزًا للبركة والوقاية عند المسلمين">
-                </div>
-            <a href="https://wa.me/213557497242?text=مرحبا%20أود%20طلب%20عجوة%20المدينة%20من%20موقع%20مملكة%20التمور"
-               target="_blank"
-               class="order-btn">
-               اطلب الآن
-            </a>
-        </div>
-        <div class="product-info">
-            <h2>عجوة المدينة الأصلية</h2>
-            <p>                تمر نبوي مبارك من قلب المدينة المنوّرة.                طبيعي 100%، خالٍ من أي إضافات أو مواد حافظة.                معروف بخصائصه الصحية ومذاقه الغني.                اختره للغذاء، للطاقة، وللبركة في بيتك.
-            </p>
-            <p class="price">السعر: €0</p>
+
+<div class="container">
+    <div class="logo-circle">
+        <img src="images/logo.png" alt="شعار مملكة التمور" onerror="this.src='https://placehold.co/200x200?text=تمور'">
+    </div>
+
+    <div class="welcome-card">
+        <h2>اهلا وسهلا بكم في مملكة التمور</h2>
+        <p>إنغمسوا في فخامة الطبيعة... هنا حيث يولد التمر ملكاً! من قلب الصحراء الساحرة، نقدم لكم منتجات عضوية فريدة: دبس التمر، سكر التمر الطبيعي، قهوة نوى التمر، شوكولاتة التمر الفاخرة، ومستحضرات تجميل طبيعية. رحلة ذوق أصيلة تنتظركم.</p>
+    </div>
+
+    <!-- شريط المنتجات المتداول السلس -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track" id="marqueeTrack">
+            <!-- سيتم تعبئة الصور عبر js للحفاظ على التكرار التلقائي السلس -->
         </div>
     </div>
-</section>
-                <section class="product-card">
-            	<div class="product-content-wrapper">
-            	      <div class="product-media-and-action">
-                <div class="product-image-container" onclick="openModal(this)">	
-                    <img src="https://live.staticflickr.com/65535/54709559259_f05400b5a5_z.jpg" alt="تمر" 
-                              data-description="تمرنا الفاخر، المختار بعناية فائقة، يمثل جوهر نخل بسكرة الأصيل. طازج وجاهز للأكل، كل تمرة كنز من الطاقة الطبيعية والنكهة الحلوة، مثالية لضيافتكم الراقية، إفطاركم الصحي، أو كهدية فاخرة تحمل عبق الأصالة. يحفظ طازجاً لفترة طويلة ليمنحك مذاقاً لا يُنسى.">
-                       </div>
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-                           target="_blank" 
-                           class="order-btn" >
-     اطلب الآن.                    
-                    </a>
-                    </div>
-                <div class="product-info">
-                    <h2>تمر (نوع بسكرة)</h2>
-                    <p>تمرنا الفاخر، المختار بعناية فائقة،................</p>    
-                     <p class="price">السعر: €0</p>            
-                </div>
-                </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	<div class="product-image-container" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54674442299_09db6711e0_b.jpg" alt="علب التمر الطازج" 
-                          data-description="من نخيلنا مباشرة إلى صندوقكم، تمر طازج ومعبأ بعناية فائقة! هذه العلب الأنيقة تحافظ على جودة التمر وطزاجته، مما يجعله جاهزاً للأكل في أي وقت. مصدر طبيعي للطاقة يدوم طويلاً، مثالي للوجبات الخفيفة الصحية أو كهدية فاخرة.">
-               </div>
-       <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-            target="_blank" 
-            class="order-btn" >
-   اطلب الآن
-</a>
-            </div>
-            <div class="product-info">
-            	<h2>علب التمر الطازج</h2>
-            <p>من نخيلنا مباشرة إلى صندوقكم، تمر طازج ومعبأ بعناية فائقة!......</p>
-            <p class="price">السعر: €0</p>
-            </div>
-            </div>
-            </section>
 
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-                <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54708645772_049ca0d2cc_z.jpg" alt="سكر التمر" 
-                              data-description="بديل صحي وطبيعي 100% للسكر الأبيض. مستخرج بعناية من أجود أنواع التمور، وهو غني بالمعادن والفيتامينات والألياف. مثالي لتحلية المشروبات، المخبوزات، والحلويات بطريقة صحية، ويضفي نكهة فريدة ومميزة.">
-                   </div>   
-                      <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-                            target="_blank" 
-                            class="order-btn" >
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>سكر التمر</h2>
-                    <p>بديل صحي للسكر الأبيض، مستخرج من التمور الطبيعية. </p>
-                    <p class="price">السعر:€ 0</p>
-                </div>
-                </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	 <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54708645782_f35869e4ab_z.jpg" alt="سكر التمر بالليمون" 
-                           data-description="لمسة منعشة من الحمضيات لسكر التمر الطبيعي! هذا السكر الصحي يجمع بين حلاوة التمور الغنية ونكهة الليمون المنعشة. مثالي لتحلية الشاي والمشروبات الصيفية، أو لإضافة نكهة فريدة للحلويات والمخبوزات، معززاً بالفوائد الطبيعية للتمور والليمون."> 
-                    </div>
-                   <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-                        target="_blank" 
-                       class="order-btn">
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>سكر التمر بالليمون</h2>
-                    <p>لمسة منعشة من الحمضيات لسكر التمر الطبيعي!................</p>
-                    <p class="price">السعر:€ 0</p>
-                    </div>
-                    </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	 <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54709476656_f91eeee78d_z.jpg" alt="سكر التمر بالبرتقال" 
-                              data-description="نكهة الشمس المنعشة مع حلاوة الطبيعة! سكر التمر بالبرتقال هو بديل صحي ومميز للسكر التقليدي. يجمع بين غنى التمور الطبيعية بفوائدها المتعددة، ونكهة البرتقال الزاهية والعطرية. مثالي لتحلية المشروبات الباردة والساخنة، أو لإضفاء لمسة منعشة ومغذية على المخبوزات والحلويات الخاصة بك.">
-                    </div>
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-                           target="_blank" 
-                            class="order-btn" >
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>سكر التمر بالبرتقال</h2>
-                    <p>نكهة الشمس المنعشة مع حلاوة الطبيعة!...........</p>
-                    <p class="price">السعر:€ 0</p>
-                    </div>
-                       </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	 <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54709811780_ef3f3eab5a_z.jpg" alt="سكر التمر بالخروب" 
-                              data-description="توليفة فريدة تجمع بين حلاوة التمر الطبيعية وغنى الخروب المغذي. هذا السكر الصحي يضيف نكهة عميقة ومميزة لوصفاتك. مثالي للمخبوزات، العصائر، أو كبديل صحي للسكر التقليدي، ويقدم فوائد الخروب الغنية بالألياف.">
-                   </div>
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>سكر التمر بالخروب</h2>
-                    <p>توليفة فريدة تجمع بين حلاوة التمر الطبيعية وغنى الخروب المغذي.............</p>
-                    <p class="price">السعر:  €0 </p>
-                    </div>
-                    </div>
-            </section>
+    <!-- شبكة المنتجات (ذكية ديناميكية من البيانات) -->
+    <div class="products-grid" id="productsGrid"></div>
 
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-                <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674294920_27d67d1a7b_b.jpg" alt="دبس التمر" 
-                              data-description="خلاصة النقاء والطاقة! دبس التمر الفاخر (روب) هو محلي طبيعي 100% مستخلص من أجود تمورنا، بدون أي إضافات صناعية. غني بالحديد، البوتاسيوم، والفيتامينات. مثالي لإضافة نكهة الأصالة إلى إفطارك، أو مع الفطائر، أو كمكون صحي في وصفاتك المفضلة.">
-                    </div> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn" >
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>دبس التمر</h2>
-                    <p>خلاصة النقاء والطاقة! دبس التمر الفاخر (روب)...............</p>
-                    <p class="price">السعر: €0</p>
-                    </div>
-                    </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	 <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674308615_2f53523a0e_b.jpg" alt="عسل التمر الخالص" 
-                              data-description="عسل التمر الطبيعي النقي 100%، تحفة من خيرات النخيل. هذا العسل الذهبي، المستخلص من رحيق التمر، يقدم طعماً فريداً ومغذياً غنياً بالفيتامينات والمعادن. مثالي لتحلية الشاي، أو على الخبز، أو كمعزز للطاقة الطبيعية في يومك.">
-                    </div> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>عسل التمر الخالص</h2>
-                    <p>عسل التمر الطبيعي النقي 100%، تحفة من خيرات النخيل..........</p>
-                    <p class="price">السعر: €0</p>
-                    </div>
-                    </div>
-            </section>
+    <div class="contact-section">
+        <h3 style="color:#b05b2a; font-size:2rem;">📞 للتواصل والاستفسار</h3>
+        <p>يسعدنا خدمتكم على مدار الساعة، تواصلوا معنا عبر واتساب أو البريد الإلكتروني أو وسائل التواصل الاجتماعي.</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/213557497242?text=مرحباً%20بكم%20في%20مملكة%20التمور.%20أود%20الاستفسار" class="social-link" style="background:#25d366; color:white;" target="_blank">📱 واتساب</a>
+            <a href="mailto:tecnc13000@gmail.com?subject=استفسار%20من%20موقع%20مملكة%20التمور" class="social-link">📧 البريد الإلكتروني</a>
+            <a href="https://www.facebook.com/profile.php?id=61578575015853" class="social-link" target="_blank">📘 فيسبوك</a>
+            <a href="https://www.instagram.com/khaal.tolgaa/" class="social-link" target="_blank">📸 انستجرام</a>
+        </div>
+    </div>
 
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-                <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg" alt="خل التمر" 
-                            data-description="خل التمر العضوي، مصنوع من أجود أنواع التمور، وهو إضافة صحية لمطبخك. يستخدم في تتبيل السلطات، المخللات، وله فوائد صحية عديدة كالمساعدة في الهضم وتنظيم السكر.">
-                    </div>
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>خل التمر</h2>
-                    <p>خل التمر العضوي، نكهة فريدة وفوائد متعددة لمطبخك.............</p>
-                    <p class="price">السعر: €0</p>
-                    </div>
-                    </div>
-            </section>
+    <div id="disqus_thread"></div>
+</div>
 
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-                <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54673986656_2a489afd9f_b.jpg" alt="قهوة نوى التمر" 
-                          data-description="بديل صحي وخالٍ من الكافيين للقهوة التقليدية! مصنوعة من بذور التمر المحمصة والمطحونة بعناية. غنية بمضادات الأكسدة والألياف، ولها نكهة ترابية فريدة ومميزة. مثالية لمن يبحث عن مشروب دافئ، مغذٍ، وصحي بدون الكافيين.">
-                    </div> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>قهوة نوى التمر</h2>
-                    <p>بديل صحي وخالٍ من الكافيين للقهوة التقليدية!..................</p>
-                    <p class="price">السعر: €0</p>
-                    </div>
-                    </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-                <div class="product-image-container" onclick="openModal(this)">
-                    <img src="https://live.staticflickr.com/65535/54674223364_3c30150f0c_z.jpg" alt="زرير" 
-                           data-description="سحر الأصالة والطاقة! زرير هو حلوى جزائرية تقليدية عريقة، تُحضّر بعناية فائقة من مكونات طبيعية غنية: التمر الفاخر، السميد المحمص، والزبدة النقية. مثالي لتقديم الطاقة الفورية، ويُعد طبقاً لا غنى عنه في المناسبات والأعياد، يقدم دفئاً وحلاوة لا تُنسى.">
-                    </div> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-                </div>
-                <div class="product-info">
-                    <h2>زرير</h2>
-                    <p>سحر الأصالة والطاقة! زرير هو حلوى جزائرية تقليدية...........</p>
-                    <p class="price">السعر: €0</p>
-                    </div>
-                    </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	<div class="product-image-container" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54674223719_50cac3c74f_b.jpg" alt="روينة" data-description="وقود صحي من قلب التراث! الروينة هي مزيج تقليدي مغذٍ، مصنوع من قمح محمّص ومطحون بعناية، مضافاً إليه خلاصة التمور الغنية. مثالية كوجبة إفطار سريعة، أو إضافة غنية للعصائر والحلويات. تمنحك طاقة مستدامة طوال اليوم ونكهة أصيلة تعود بك للزمن الجميل.">
-            </div> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-            </div>
-            <div class="product-info">
-            	<h2>روينة</h2>
-            <p>وقود صحي من قلب التراث! الروينة هي مزيج تقليدي مغذٍ،.................</p>
-            <p class="price">السعر: €0</p>
-            </div>
-            </div>
-              </section>
-
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	<div class="product-image-container" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54674310250_5c4aeee03a_b.jpg" alt="كحل تقليدي" data-description="جمال طبيعي من قلب الصحراء! كحل نواة التمر التقليدي مصنوع يدوياً من بذور التمر المحمصة بعناية ومطحونة بدقة. يعطي مظهراً جذاباً للعيون ويستخدم منذ القدم لفوائده في تقوية البصر وتطهير العين، وهو طبيعي 100% وآمن.">
-            </div> 
-                     <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-            </div>
-            <div class="product-info">
-            	<h2>كحل تقليدي</h2>
-            <p>جمال طبيعي من قلب الصحراء! كحل نواة التمر التقليدي.............</p>
-            <p class="price">السعر: €0</p>
-            </div>
-           </div>
-            </section>
-
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	<div class="product-image-container" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54674309715_fb053088be_b.jpg" alt="زيت نوات التمر" data-description="سائل الذهب الخالص من قلب النواة! زيت نواة التمر البكر يُستخرج بالضغط البارد من بذور التمر. غني بمضادات الأكسدة، فيتامين E، والأحماض الدهنية الأساسية. مثالي لترطيب البشرة والشعر، ومحاربة علامات الشيخوخة، ويمكن استخدامه في بعض الوصفات الغذائية الصحية.">
-                </div> 
-                <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-            </div>
-            <div class="product-info">
-            	<h2>زيت نواة التمر</h2>
-            <p>سائل الذهب الخالص من قلب النواة! زيت نواة التمر...............</p>
-            <p class="price">السعر: €0</p>
-            </div>
-            </div>
-            </section>
-            
-               <section class="product-card">
-               	<div class="product-content-wrapper">
-               	<div class="product-media-and-action">
-            	<div class="product-image-container" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54674069476_a5ecf189df_b.jpg" alt="صابون التمر" data-description="نضارة الصحراء في قالب! صابون التمر الطبيعي يجمع بين قوة التمر المغذية وخصائص الزيوت الطبيعية الفاخرة. ينظف بشرتك بلطف، يرطبها بعمق، ويتركها ناعمة، نضرة، ومشرقة. استمتع بتجربة استحمام فريدة تمنح بشرتك العناية الفائقة التي تستحقها.">
-                </div> 
-                <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-            </div>
-            <div class="product-info">
-            	<h2>صابون التمر</h2>
-            <p>نضارة الصحراء في قالب! صابون التمر الطبيعي...............</p>
-            <p class="price">السعر: €0</p>
-            </div>
-            </div>
-            </section>
-            
-            <section class="product-card">
-            	<div class="product-content-wrapper">
-            	<div class="product-media-and-action">
-            	<div class="product-image-container" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54674214918_b18caf2232_b.jpg" alt="شكولاطة التمر" data-description="تناغم مثالي بين الطاقة واللذة! اكتشفوا شوكولاتة التمر الفاخرة، حيث يلتقي سحر التمر الطبيعي المختار بعناية بترف الشوكولاتة الغنية. كل قطعة هي دعوة لتجربة فريدة تجمع بين المذاق الحلو المغذي وقوام الشوكولاتة الذائب. مثالية كوجبة خفيفة، أو هدية مميزة، أو ببساطة للانغماس في لحظة من المتعة الخالصة.">
-                </div> 
-               <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-            </div>
-            <div class="product-info">
-            	<h2>شكولاطة التمر</h2>
-            <p>تناغم مثالي بين الطاقة واللذة! اكتشفوا شوكولاتة...............</p>
-            <p class="price">السعر: €0</p>
-            </div>
-            </div>
-            </section>
- 
-              <section class="product-card">
-              	<div class="product-content-wrapper">
-              	<div class="product-media-and-action">
-            	<div class="product-image-container" onclick="openModal(this)">
-            	<img src="https://live.staticflickr.com/65535/54673986326_d66aa3a066_b.jpg" alt="التمر المحشي بالمكسرات" data-description="مذاق الفخامة في كل قضمة! تمراتنا الفاخرة، المختارة بعناية، تتحول إلى تحفة فنية بعد حشوها بمزيج غني من المكسرات الطبيعية الفاخرة (مثل اللوز، الجوز، الفستق) والشوكولاتة النقية (حسب النوع). كل قطعة هي تجربة مذاق فريدة، تجمع بين حلاوة التمر الأصيلة وقوام الحشوة الغني. مثالي لضيافتكم الراقية أو كهدية تترك أثراً لا يُنسى.">
-                </div> 
-                <a href="https://wa.me/213557497242?text=مرحبا%20اود%20طلب%20هذا%20المنتج%20من%20مملكة%20التمور"
-   target="_blank" 
-   class="order-btn">
-   اطلب الآن
-</a>
-            </div>
-            <div class="product-info">
-            	<h2>التمر المحشي بالمكسرات</h2>
-            <p>مذاق الفخامة في كل قضمة! تمراتنا الفاخرة، المختارة بعناية،............</p>
-            <p class="price">السعر: €0</p>
-            </div>
-            </div>
-            </section>
-            
-            
-        <section class="contact-section">
-            <h3>للتواصل والاستفسار</h3>
-            <p>يسعدنا تلقي استفساراتكم وطلباتكم. <br> يمكنك التواصل معنا عبر:</p>
-            <div class="contact-buttons">
-                <a href="https://wa.me/213557497242?text=مرحباً%20بكم%20في%20مملكة%20التمور." class="whatsapp-btn" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp Icon">
-                    تواصل واتساب
-                </a>
-                <a href="mailto:tecnc13000@gmail.com?subject=استفسار%20من%20موقع%20مملكة%20التمور" class="email-btn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Email Icon">
-                    إرسال بريد إلكتروني
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61578575015853" class="social-btn" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1200px-2021_Facebook_icon.svg.png" alt="Facebook Icon">
-                    فيسبوك
-                </a>
-                 <a href="https://www.instagram.com/khaal.tolgaa/" class="social-btn instagram" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram Icon">
-                    انستجرام
-                </a>
-            </div>
-        </section>
-        <div id="disqus_thread"></div>
-    </main>
 <footer>
-    <p>&copy; 2025 مملكة التمور. جميع الحقوق محفوظة.</p>
-    <p>🇩🇿 منتوج بلادي 🇩🇿</p>
+    <p>© 2025 مملكة التمور — منتوج بلادي 🇩🇿 جميع الحقوق محفوظة.</p>
+    <p>✨ منتجات عضوية طبيعية 100% ✨</p>
 </footer>
 
-<div id="imageModal" class="modal" aria-hidden="true">
-<span class="close" onclick="closeModal()">&times;</span>
-<div class="modal-content-container">
-<img class="modal-content" id="modalImage" src="" alt="تمر مجدول عضوي، حبات متجعة وغنية بالمراميل"> <div id="modalDescription" class="modal-description">
+<!-- سلة الطلبات الذكية -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3>🛒 سلة الطلبات</h3>
+        <button class="close-cart" id="closeCartBtn">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItemsList">
+        <p style="text-align:center; padding:2rem;">السلة فارغة</p>
+    </div>
+    <div class="cart-total">
+        <span>المجموع:</span>
+        <span id="cartTotalPrice">0 دج</span>
+    </div>
+    <div class="cart-buttons">
+        <button class="btn btn-primary" id="clearCartBtn">🗑️ تفريغ السلة</button>
+        <button class="btn btn-whatsapp" id="checkoutWhatsappBtn">📲 طلب عبر واتساب</button>
+    </div>
 </div>
+<div class="cart-icon" id="cartIcon">
+    🛒 <span id="cartCountBadge">0</span>
 </div>
+
+<!-- مودال عرض تفاصيل المنتج -->
+<div id="productModal" class="modal-overlay">
+    <div class="modal-card">
+        <span class="close-modal" id="closeModalBtn">&times;</span>
+        <img id="modalImage" src="" alt="منتج مملكة التمور">
+        <div class="modal-body">
+            <h3 id="modalTitle"></h3>
+            <p id="modalFullDesc"></p>
+        </div>
+    </div>
 </div>
 
 <script>
-    // Google Analytics (gtag.js)
+    // ------------------------- قائمة المنتجات (بيانات مركزية لتوليد الصفحة ذكياً) -------------------------
+    const productsData = [
+        { id: 1, name: "عجوة المدينة الأصلية", price: 12, shortDesc: "تمر نبوي مبارك من المدينة المنورة، طبيعي 100%", fullDesc: "عجوة المدينة — ليست مجرد تمرة لذيذة، بل مزيج غذاء ودواء... غنية بمضادات الأكسدة وتقوي المناعة. ورد في الحديث النبوي: (من تصبح بسبع تمرات عجوة لم يضره سم ولا سحر).", img: "https://live.staticflickr.com/65535/54708727122_1c0e17085b_c.jpg", waMsg: "أود طلب عجوة المدينة الأصلية" },
+        { id: 2, name: "تمر بسكرة الفاخر", price: 8, shortDesc: "تمور طازجة من نخيل بسكرة، حلاوة طبيعية", fullDesc: "تمرنا الفاخر المختار بعناية فائقة يمثل جوهر نخل بسكرة الأصيل، طازج وجاهز للأكل، يمنحك طاقة طبيعية.", img: "https://live.staticflickr.com/65535/54709559259_f05400b5a5_z.jpg", waMsg: "أود طلب تمر بسكرة" },
+        { id: 3, name: "علب التمر الطازج", price: 15, shortDesc: "عبوة أنيقة تحافظ على الطزاجة", fullDesc: "من نخيلنا مباشرة إلى صندوقكم، علب أنيقة تحافظ على التمر طازجاً، مثالي للهدايا أو الوجبات الصحية.", img: "https://live.staticflickr.com/65535/54674442299_09db6711e0_b.jpg", waMsg: "أود طلب علب التمر الطازج" },
+        { id: 4, name: "سكر التمر الطبيعي", price: 9, shortDesc: "بديل صحي 100% للسكر الأبيض", fullDesc: "مستخلص من أجود التمور، غني بالمعادن، مثالي للمخبوزات والمشروبات.", img: "https://live.staticflickr.com/65535/54708645772_049ca0d2cc_z.jpg", waMsg: "أود طلب سكر التمر الطبيعي" },
+        { id: 5, name: "سكر التمر بالليمون", price: 10, shortDesc: "نكهة منعشة مع حلاوة التمر", fullDesc: "سكر التمر الطبيعي مع نكهة الليمون الحمضية المنعشة، رائع للشاي والحلويات.", img: "https://live.staticflickr.com/65535/54708645782_f35869e4ab_z.jpg", waMsg: "أود طلب سكر التمر بالليمون" },
+        { id: 6, name: "سكر التمر بالبرتقال", price: 10, shortDesc: "نكهة الشمس مع حلاوة الطبيعة", fullDesc: "سكر التمر العضوي بنكهة البرتقال الطبيعية، يعزز المشروبات والمخبوزات بطعم فريد.", img: "https://live.staticflickr.com/65535/54709476656_f91eeee78d_z.jpg", waMsg: "أود طلب سكر التمر بالبرتقال" },
+        { id: 7, name: "سكر التمر بالخروب", price: 11, shortDesc: "غني بالألياف ونكهة مميزة", fullDesc: "توليفة فريدة من التمر والخروب، بديل صحي للسكر يمدك بالطاقة.", img: "https://live.staticflickr.com/65535/54709811780_ef3f3eab5a_z.jpg", waMsg: "أود طلب سكر التمر بالخروب" },
+        { id: 8, name: "دبس التمر (روب)", price: 13, shortDesc: "خلاصة النقاء والطاقة", fullDesc: "دبس التمر الفاخر محلي طبيعي غني بالحديد، مثالي للإفطار أو الحلويات.", img: "https://live.staticflickr.com/65535/54674294920_27d67d1a7b_b.jpg", waMsg: "أود طلب دبس التمر" },
+        { id: 9, name: "عسل التمر الخالص", price: 14, shortDesc: "عسل ذهبي نقي 100%", fullDesc: "مستخلص من رحيق التمر، غني بالفيتامينات، بديل صحي ولذيذ.", img: "https://live.staticflickr.com/65535/54674308615_2f53523a0e_b.jpg", waMsg: "أود طلب عسل التمر" },
+        { id: 10, name: "خل التمر العضوي", price: 7, shortDesc: "نكهة فريدة وفوائد صحية", fullDesc: "خل التمر العضوي المصنوع من أجود التمور، مثالي للسلطات والمخللات.", img: "https://live.staticflickr.com/65535/54674212168_42407b1342_b.jpg", waMsg: "أود طلب خل التمر" },
+        { id: 11, name: "قهوة نوى التمر", price: 12, shortDesc: "بديل صحي خالٍ من الكافيين", fullDesc: "مصنوعة من بذور التمر المحمصة، غنية بمضادات الأكسدة، نكهة ترابية مميزة.", img: "https://live.staticflickr.com/65535/54673986656_2a489afd9f_b.jpg", waMsg: "أود طلب قهوة نوى التمر" },
+        { id: 12, name: "زرير (حلوى تقليدية)", price: 10, shortDesc: "سحر الأصالة والطاقة", fullDesc: "حلوى جزائرية تقليدية من التمر والسميد المحمص، تمدك بالطاقة.", img: "https://live.staticflickr.com/65535/54674223364_3c30150f0c_z.jpg", waMsg: "أود طلب زرير" },
+        { id: 13, name: "روينة", price: 9, shortDesc: "مزيج مغذٍ من القمح والتمر", fullDesc: "روينة تقليدية كوجبة فطور سريعة غنية بالطاقة المستدامة.", img: "https://live.staticflickr.com/65535/54674223719_50cac3c74f_b.jpg", waMsg: "أود طلب روينة" },
+        { id: 14, name: "كحل تقليدي (نواة التمر)", price: 6, shortDesc: "جمال طبيعي من الصحراء", fullDesc: "كحل نواة التمر المحمصة، يقوي البصر ويطهر العين طبيعياً.", img: "https://live.staticflickr.com/65535/54674310250_5c4aeee03a_b.jpg", waMsg: "أود طلب كحل تقليدي" },
+        { id: 15, name: "زيت نواة التمر", price: 18, shortDesc: "سائل الذهب للبشرة والشعر", fullDesc: "زيت نواة التمر البكر الممتاز غني بفيتامين E والأحماض الدهنية للترطيب.", img: "https://live.staticflickr.com/65535/54674309715_fb053088be_b.jpg", waMsg: "أود طلب زيت نواة التمر" },
+        { id: 16, name: "صابون التمر الطبيعي", price: 8, shortDesc: "نضارة الصحراء", fullDesc: "صابون مرطب ومغذي للبشرة بفضل فوائد التمر والزيوت الطبيعية.", img: "https://live.staticflickr.com/65535/54674069476_a5ecf189df_b.jpg", waMsg: "أود طلب صابون التمر" },
+        { id: 17, name: "شوكولاتة التمر", price: 14, shortDesc: "تناغم مثالي بين الطاقة واللذة", fullDesc: "شوكولاتة غنية بحشوة التمر الطبيعية، تجمع بين الفخامة والصحة.", img: "https://live.staticflickr.com/65535/54674214918_b18caf2232_b.jpg", waMsg: "أود طلب شوكولاتة التمر" },
+        { id: 18, name: "التمر المحشي بالمكسرات", price: 16, shortDesc: "فاخر وحشوة غنية", fullDesc: "تمور فاخرة محشوة بالمكسرات الفاخرة (لوز - جوز) وشوكولاتة، تحفة فنية للمناسبات.", img: "https://live.staticflickr.com/65535/54673986326_d66aa3a066_b.jpg", waMsg: "أود طلب التمر المحشي بالمكسرات" }
+    ];
+
+    // سلة المشتريات
+    let cart = JSON.parse(localStorage.getItem("dateKingdomCart")) || [];
+    
+    function saveCart() {
+        localStorage.setItem("dateKingdomCart", JSON.stringify(cart));
+        updateCartUI();
+    }
+    
+    function updateCartUI() {
+        const cartContainer = document.getElementById("cartItemsList");
+        const totalSpan = document.getElementById("cartTotalPrice");
+        const badge = document.getElementById("cartCountBadge");
+        let total = 0;
+        let itemCount = 0;
+        if (cart.length === 0) {
+            cartContainer.innerHTML = "<p style='text-align:center; padding:2rem;'>🛍️ السلة فارغة</p>";
+            totalSpan.innerText = "0 دج";
+            badge.innerText = "0";
+            return;
+        }
+        cartContainer.innerHTML = "";
+        cart.forEach((item, idx) => {
+            total += item.price * item.qty;
+            itemCount += item.qty;
+            const div = document.createElement("div");
+            div.className = "cart-item";
+            div.innerHTML = `
+                <div class="cart-item-info"><strong>${item.name}</strong><br>${item.price} دج</div>
+                <div class="cart-item-qty">
+                    <button data-idx="${idx}" class="decQty">-</button>
+                    <span>${item.qty}</span>
+                    <button data-idx="${idx}" class="incQty">+</button>
+                    <button data-idx="${idx}" class="removeItem" style="background:#e07a5f; color:white; margin-right:8px;">🗑</button>
+                </div>
+            `;
+            cartContainer.appendChild(div);
+        });
+        totalSpan.innerText = total + " دج";
+        badge.innerText = itemCount;
+        // إضافة مستمعات
+        document.querySelectorAll(".decQty").forEach(btn => {
+            btn.addEventListener("click", (e) => { let i = parseInt(btn.dataset.idx); if(cart[i].qty > 1) cart[i].qty--; else cart.splice(i,1); saveCart(); });
+        });
+        document.querySelectorAll(".incQty").forEach(btn => {
+            btn.addEventListener("click", (e) => { let i = parseInt(btn.dataset.idx); cart[i].qty++; saveCart(); });
+        });
+        document.querySelectorAll(".removeItem").forEach(btn => {
+            btn.addEventListener("click", (e) => { let i = parseInt(btn.dataset.idx); cart.splice(i,1); saveCart(); });
+        });
+    }
+    
+    function addToCart(product, qty = 1) {
+        const exist = cart.find(p => p.id === product.id);
+        if(exist) exist.qty += qty;
+        else cart.push({ id: product.id, name: product.name, price: product.price, qty: qty });
+        saveCart();
+    }
+
+    // توليد شبكة المنتجات ديناميكياً
+    const grid = document.getElementById("productsGrid");
+    function renderProducts() {
+        grid.innerHTML = "";
+        productsData.forEach(prod => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.innerHTML = `
+                <div class="product-img-wrapper" data-id="${prod.id}">
+                    <img src="${prod.img}" alt="${prod.name}" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h3>${prod.name}</h3>
+                    <p class="product-desc">${prod.shortDesc}</p>
+                    <div class="price">${prod.price} دج</div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary add-to-cart-btn" data-id="${prod.id}">➕ أضف للسلة</button>
+                        <a href="https://wa.me/213557497242?text=مرحبا%20أود%20طلب%20${encodeURIComponent(prod.name)}" target="_blank" class="btn btn-whatsapp">📲 طلب مباشر</a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+            // إضافة حدث للصورة لفتح المودال
+            card.querySelector(".product-img-wrapper").addEventListener("click", () => openModal(prod));
+            card.querySelector(".add-to-cart-btn").addEventListener("click", (e) => {
+                e.stopPropagation();
+                addToCart(prod);
+                alert(`✅ تم إضافة ${prod.name} إلى السلة`);
+            });
+        });
+    }
+
+    function openModal(product) {
+        const modal = document.getElementById("productModal");
+        document.getElementById("modalImage").src = product.img;
+        document.getElementById("modalTitle").innerText = product.name;
+        document.getElementById("modalFullDesc").innerText = product.fullDesc;
+        modal.style.display = "flex";
+    }
+    
+    // شريط التمرير المتداول (صور متكررة)
+    function initMarquee() {
+        const track = document.getElementById("marqueeTrack");
+        const imagesList = productsData.map(p => `<img src="${p.img}" alt="${p.name}" loading="lazy" style="cursor:pointer;" onclick="openModalById(${p.id})">`);
+        // تكرار مرتين للتمرير اللانهائي
+        track.innerHTML = imagesList.join("") + imagesList.join("");
+    }
+    window.openModalById = (id) => { const prod = productsData.find(p=>p.id===id); if(prod) openModal(prod); };
+    
+    // أحداث السلة الجانبية
+    document.getElementById("cartIcon").addEventListener("click", () => document.getElementById("cartSidebar").classList.add("open"));
+    document.getElementById("closeCartBtn").addEventListener("click", () => document.getElementById("cartSidebar").classList.remove("open"));
+    document.getElementById("clearCartBtn").addEventListener("click", () => { cart = []; saveCart(); alert("تم تفريغ السلة"); });
+    document.getElementById("checkoutWhatsappBtn").addEventListener("click", () => {
+        if(cart.length===0) { alert("السلة فارغة"); return; }
+        let message = "مرحباً، أود طلب المنتجات التالية من مملكة التمور:%0A";
+        cart.forEach(item => { message += `- ${item.name} (الكمية: ${item.qty}) - السعر: ${item.price * item.qty} دج%0A`; });
+        const total = cart.reduce((sum,i)=> sum + (i.price * i.qty),0);
+        message += `%0Aالإجمالي الكلي: ${total} دج %0Aالرجاء تأكيد الطلب.`;
+        window.open(`https://wa.me/213557497242?text=${message}`, "_blank");
+    });
+    
+    // إغلاق المودال
+    document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("productModal").style.display = "none");
+    window.onclick = (e) => { if(e.target === document.getElementById("productModal")) document.getElementById("productModal").style.display = "none"; };
+    
+    // Disqus بتعريف واحد فقط
+    (function() { var d = document, s = d.createElement('script'); s.src = 'https://kingdattes.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+    
+    renderProducts();
+    initMarquee();
+    updateCartUI();
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6P7KRZ8S5W"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-6P7KRZ8S5W'); // تأكد من معرف التتبع الخاص بك
-
-
-    // نافذة عرض الصورة (Image Modal)
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("modalImage");
-    var modalDescription = document.getElementById("modalDescription");
-
-    function openModal(clickedElement) {
-        modal.style.display = "flex"; // تم التعديل إلى flex لتوسيط المحتوى
-        modal.setAttribute("aria-hidden", "false");
-
-        var imgElementInsideDiv = clickedElement.querySelector('img');
-        modalImg.src = imgElementInsideDiv.src;
-
-        var description = imgElementInsideDiv.getAttribute('data-description');
-        modalDescription.textContent = description;
-    }
-
-    function closeModal() {
-        modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true");
-    }
-
-    // غلق النافذة عند الضغط خارجها
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            closeModal();
-        }
-    };
-
-    // إعدادات Disqus
-   var disqus_config = function () {
-   this.page.url = "https://king-dattes.vercel.app/"; // **** هكذا يجب أن يكون الرابط ****
-   this.page.identifier = "home-page-king-dattes";
-   };
-   (function() {
-   var d = document, s = d.createElement('script');
-   s.src = 'https://kingdattes.disqus.com/embed.js'; // **** هكذا يجب أن يكون الرابط ****
-   s.setAttribute('data-timestamp', +new Date());
-   (d.head || d.body).appendChild(s);
-   })();
-
-    (function() {
-        var d = document, s = d.createElement('script');
-        s.src = '[https://kingdattes.disqus.com/embed.js](https://kingdattes.disqus.com/embed.js)';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-
-
-    // شريط المنتجات المتحرك
-    const stripContainer = document.getElementById("product-strip-container");
-    let animationPaused = false;
-
-    window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        if (scrollY > 100 && !animationPaused) {
-            stripContainer.style.animationPlayState = 'paused';
-            animationPaused = true;
-        } else if (scrollY <= 100 && animationPaused) {
-            stripContainer.style.animationPlayState = 'running';
-            animationPaused = false;
-        }
-    });
-
-    
+    gtag('config', 'G-6P7KRZ8S5W');
 </script>
-
-   </body>
+</body>
    </html>
-
-
-
-
-
-
-
-
-
-
-
